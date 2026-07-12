@@ -1,13 +1,20 @@
 # Caumos Internal
 
-Kho lưu trữ tài liệu nội bộ của Caumos — Phòng Marketing. Đây là một dự án Next.js dùng để triển khai bản slide trình bày như một website nội bộ (deploy trên Hostinger).
+Website nội bộ của Caumos — Phòng Marketing. Dự án Next.js, đang chạy tại [internal.caumosjapan.com](https://internal.caumosjapan.com/), triển khai qua Hostinger.
 
-## Nội dung
+## Cấu trúc trang
 
-- **`public/slides.html`** — Bản slide "Phương pháp luận Lộ trình thử việc 2 tháng", bản trình Ban Giám đốc (CEO). Điều hướng bằng phím mũi tên / vuốt / click. Được phục vụ tại URL gốc `/` thông qua rewrite trong `next.config.ts`.
-- **`public/Caumos_Lo_trinh_thu_viec_2_thang.pdf`** — Bản PDF xuất từ slide trên, tải trực tiếp tại `/Caumos_Lo_trinh_thu_viec_2_thang.pdf`.
+- **`/`** — Trang chủ: Lộ trình thử việc 2 tháng (bản slide điều hướng bằng phím mũi tên / vuốt / click). Component: `src/components/Roadmap.tsx`.
+- **`/van-hoa`** — Văn hoá Caumos: cẩm nang 8 trụ cột văn hoá Phòng Marketing. Component: `src/app/van-hoa/page.tsx`.
+- Menu điều hướng chính nằm ở `src/components/SiteNav.tsx`, hiển thị trên mọi trang qua `src/app/layout.tsx`. Thêm trang mới → thêm route trong `src/app/` và thêm link vào mảng `LINKS` trong `SiteNav.tsx`.
 
-> ⚠️ Tài liệu này chứa thông tin đánh giá nhân sự và chính sách lương thử việc — cân nhắc quyền truy cập phù hợp trước khi chia sẻ (repo hiện đang ở chế độ Public).
+## Design system dùng chung
+
+- `src/app/globals.css` — token màu/font thương hiệu Caumos (navy, sky, mint...) và khai báo `@font-face` cho Playfair Display + Be Vietnam Pro (file thật trong `public/fonts/`, không nhúng base64) — mọi trang mới nên tái sử dụng các biến này thay vì tự định nghĩa màu/font riêng.
+- Logo: `public/brand/logo-navy.png`.
+- `public/slides.html` + `public/Caumos_Lo_trinh_thu_viec_2_thang.pdf` — bản xuất tĩnh, không phụ thuộc React, dùng để tái tạo file PDF khi cần (không còn được serve tại `/`, chỉ truy cập trực tiếp qua đường dẫn của nó).
+
+> ⚠️ Trang Văn hoá và Lộ trình thử việc chứa thông tin nội bộ (đánh giá nhân sự, chính sách lương) — cân nhắc quyền truy cập phù hợp (repo hiện đang ở chế độ Public).
 
 ## Chạy thử ở máy local
 
@@ -37,5 +44,3 @@ npm run start:hostinger
 3. Bấm **NPM Install**.
 4. Mở Terminal trong hPanel (hoặc SSH), chạy `npm run build` trong thư mục ứng dụng.
 5. **Restart** ứng dụng trong hPanel.
-
-Khi hoạt động đúng, truy cập domain gốc sẽ hiển thị thẳng bản slide (nhờ rewrite `/` → `/slides.html` trong `next.config.ts`), không cần gõ thêm đường dẫn.

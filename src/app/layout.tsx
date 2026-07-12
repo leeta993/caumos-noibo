@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import SiteNav from "@/components/SiteNav";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Caumos Internal",
@@ -12,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body>{children}</body>
+      <body>
+        <SiteNav />
+        {children}
+      </body>
     </html>
   );
 }
