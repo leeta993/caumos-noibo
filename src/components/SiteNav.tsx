@@ -9,6 +9,7 @@ import styles from "./SiteNav.module.css";
 const LINKS = [
   { href: "/", label: "Lộ trình thăng tiến" },
   { href: "/van-hoa", label: "Văn hoá Caumos" },
+  { href: "/danh-gia-nang-luc", label: "Đánh giá năng lực" },
 ];
 
 export default function SiteNav() {

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>CAUMOS · Phiếu đánh giá năng lực AKS — Ecom Ops & Digital Ads</title>
+<style>
+:root{
+  --bg:#E9FBFF; --card:#FFFFFF; --line:#C4E8F7; --line2:#BCECF7;
+  --navy:#115E8E; --blue:#399FD8; --cyan:#91D1E2; --paleblue:#C4E8F7;
+  --sakura:#F5B9D3; --pinkbg:#FEE2F2; --plum:#B24459;
+  --ink:#1b3a52; --muted:#5b7d96;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Lato','Segoe UI',Calibri,Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;padding-bottom:90px}
+.wrap{max-width:1060px;margin:0 auto;padding:18px 16px}
+h1,h2,h3{color:var(--navy);font-weight:700}
+.serif{font-family:Georgia,'Palatino Linotype',serif}
+
+/* header */
+.hdr{background:linear-gradient(135deg,#E9FBFF 0%,#C4E8F7 60%,#BCECF7 100%);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-bottom:14px;position:relative;overflow:hidden}
+.hdr .brand{font-size:12px;letter-spacing:4px;color:var(--blue);font-weight:700}
+.hdr h1{font-size:24px;margin:4px 0 2px}
+.hdr .sub{color:var(--muted);font-size:13px}
+.hdr .sakura{position:absolute;right:18px;top:14px;font-size:30px;opacity:.55}
+
+/* panels */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.panel h2{font-size:16px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.badge-num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;font-size:12px;flex:none}
+
+/* info grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.field label{display:block;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.field input[type=text],.field input[type=date],.field select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:13px;background:#FBFEFF;color:var(--ink)}
+.field input:focus,.field select:focus{outline:2px solid var(--cyan)}
+
+/* segmented */
+.seg{display:flex;border:1px solid var(--blue);border-radius:9px;overflow:hidden}
+.seg button{flex:1;padding:8px 6px;border:0;background:#fff;color:var(--blue);font-weight:700;font-family:inherit;font-size:13px;cursor:pointer}
+.seg button.on{background:var(--blue);color:#fff}
+.lvlinfo{margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:12.5px}
+.lvlinfo b{color:var(--navy)}
+.lvlinfo .cond{color:var(--muted);margin-top:2px}
+
+/* weights */
+.wrow{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.wbox{flex:1;min-width:120px;border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:#FBFEFF}
+.wbox .t{font-size:11px;font-weight:700;color:var(--muted)}
+.wbox input{width:64px;padding:5px 8px;border:1px solid var(--line);border-radius:6px;font-size:15px;font-weight:700;color:var(--navy);font-family:inherit}
+.wsum{font-size:12px;font-weight:700}
+.wsum.bad{color:var(--plum)}
+.note{font-size:12px;color:var(--muted);margin-top:6px}
+
+/* legend */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.chip{border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;border:1px solid var(--line)}
+details.guide summary{cursor:pointer;font-weight:700;color:var(--blue);font-size:13px}
+details.guide[open] summary{margin-bottom:8px}
+.guide-tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}
+.guide-tbl th,.guide-tbl td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.guide-tbl th{background:var(--bg);color:var(--navy)}
+
+/* group */
+.group{border:1px solid var(--line);border-radius:14px;margin-bottom:14px;overflow:hidden;background:#fff}
+.ghead{display:flex;align-items:center;gap:12px;padding:13px 16px;background:linear-gradient(90deg,var(--paleblue),#E9FBFF);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.gletter{width:38px;height:38px;border-radius:10px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;flex:none}
+.ghead .gt{flex:1;min-width:200px}
+.ghead .gt b{color:var(--navy);font-size:15px}
+.ghead .gt .s{font-size:12px;color:var(--muted)}
+.gscore{text-align:right}
+.gscore .v{font-size:20px;font-weight:800;color:var(--navy)}
+.gscore .l{font-size:11px;color:var(--muted)}
+.gbar{height:6px;background:var(--bg)}
+.gbar i{display:block;height:100%;background:var(--blue);transition:width .3s}
+
+/* competency row */
+.comp{padding:12px 16px;border-bottom:1px solid #E4F4FB}
+.comp:last-child{border-bottom:0}
+.comp.gap-bad{background:#FFF6F9;border-left:3px solid var(--plum)}
+.comp.done-ok{border-left:3px solid var(--cyan)}
+.crow{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.cinfo{flex:1;min-width:260px}
+.cname{font-weight:700;font-size:13.5px;color:var(--ink)}
+.ctags{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
+.tag{font-size:10.5px;font-weight:700;padding:1px 8px;border-radius:10px;background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.tag.td-D{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tag.td-T{background:#fff;color:var(--navy);border-color:var(--navy)}
+.tag.req{background:var(--pinkbg);color:var(--plum);border-color:var(--sakura)}
+.crate{display:flex;flex-direction:column;gap:6px;min-width:280px}
+.rbtns{display:flex;gap:5px}
+.rbtns button{width:40px;height:34px;border-radius:8px;border:1.5px solid var(--line);background:#fff;font-weight:800;font-size:14px;color:var(--muted);cursor:pointer;font-family:inherit}
+.rbtns button:hover{border-color:var(--blue);color:var(--blue)}
+.rbtns button.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+.rbtns button.sel.zero{background:var(--plum);border-color:var(--plum)}
+.anchor{font-size:12px;color:var(--muted);background:var(--bg);border-radius:8px;padding:6px 9px;display:none}
+.anchor.show{display:block}
+.anchor b{color:var(--navy)}
+.cstat{min-width:86px;text-align:right}
+.pct{font-size:16px;font-weight:800}
+.pct.ok{color:var(--blue)} .pct.bad{color:var(--plum)} .pct.zero{color:var(--plum)}
+.slabel{font-size:11px;font-weight:700}
+.slabel.ok{color:var(--blue)} .slabel.over{color:#3E8FA8} .slabel.bad{color:var(--plum)}
+.ctools{margin-top:6px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.lnk{font-size:11.5px;color:var(--blue);cursor:pointer;font-weight:700;background:none;border:none;font-family:inherit;padding:0}
+.evid{display:none;margin-top:6px}
+.evid.show{display:block}
+.evid input{width:100%;padding:6px 9px;border:1px dashed var(--line);border-radius:7px;font-size:12px;font-family:inherit;background:#FBFEFF}
+.barsfull{display:none;margin-top:7px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.barsfull.show{display:block}
+.barsfull .brow{display:flex;gap:8px;padding:5px 9px;font-size:12px;border-bottom:1px solid #EAF6FC}
+.barsfull .brow:last-child{border-bottom:0}
+.barsfull .bl{flex:none;width:52px;font-weight:800;color:var(--navy)}
+
+/* result */
+.resgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.resgrid{grid-template-columns:1fr}}
+.gauge{margin-bottom:10px}
+.gauge .gl{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;margin-bottom:3px}
+.gauge .gtr{height:12px;border-radius:6px;background:var(--bg);overflow:hidden}
+.gauge .gfill{height:100%;background:var(--blue);border-radius:6px;transition:width .3s}
+.total-line{display:flex;align-items:baseline;gap:10px;margin:10px 0 4px}
+.total-line .tv{font-size:34px;font-weight:800;color:var(--navy)}
+.concl{border-radius:12px;padding:12px 14px;font-weight:700;margin-top:8px;border:1.5px solid}
+.concl.dat-tot{background:#EAF7FF;border-color:var(--blue);color:var(--navy)}
+.concl.dat{background:#F2FBFF;border-color:var(--cyan);color:var(--navy)}
+.concl.sua{background:var(--pinkbg);border-color:var(--sakura);color:var(--plum)}
+.concl.tuchoi{background:#FBEDF1;border-color:var(--plum);color:var(--plum)}
+.concl.pending{background:var(--bg);border-color:var(--line);color:var(--muted)}
+.concl .big{font-size:17px}
+.concl ul{margin:6px 0 0 18px;font-weight:400;font-size:12.5px}
+.gaplist{font-size:12.5px}
+.gaplist li{margin-bottom:4px}
+.gaplist .plum{color:var(--plum);font-weight:700}
+textarea{width:100%;min-height:64px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:13px;background:#FBFEFF;resize:vertical}
+.prevrow{display:flex;gap:10px;align-items:center;font-size:13px;flex-wrap:wrap}
+.prevrow input{width:80px;padding:6px 8px;border:1px solid var(--line);border-radius:7px;font-family:inherit}
+.delta{font-weight:800}
+.delta.up{color:#2E7FA8}.delta.down{color:var(--plum)}
+
+/* probation */
+#probPanel{display:none}
+#probPanel.show{display:block}
+.prob-tbl{width:100%;border-collapse:collapse;font-size:13px}
+.prob-tbl th,.prob-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left}
+.prob-tbl th{background:var(--bg);color:var(--navy)}
+.prob-tbl input{width:70px;padding:5px 7px;border:1px solid var(--line);border-radius:6px;font-family:inherit;font-weight:700}
+
+/* sticky bar */
+.sticky{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:2px solid var(--paleblue);box-shadow:0 -4px 18px rgba(17,94,142,.10);z-index:50}
+.sticky .in{max-width:1060px;margin:0 auto;padding:9px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.sk{font-size:11px;color:var(--muted);font-weight:700}
+.sv{font-size:16px;font-weight:800;color:var(--navy)}
+.sconcl{padding:5px 14px;border-radius:20px;font-weight:800;font-size:13px;border:1.5px solid}
+.spacer{flex:1}
+.btn{padding:8px 16px;border-radius:9px;border:1.5px solid var(--blue);background:var(--blue);color:#fff;font-weight:700;font-family:inherit;font-size:13px;cursor:pointer}
+.btn.ghost{background:#fff;color:var(--blue)}
+.btn.small{padding:6px 12px;font-size:12px}
+
+/* radar */
+.radarbox{text-align:center}
+.radarbox svg{max-width:100%}
+
+/* print */
+@media print{
+  body{background:#fff;padding-bottom:0;font-size:11px}
+  .sticky,.noprint,.lnk,.rbtns button:not(.sel){display:none !important}
+  .panel,.group{break-inside:avoid;border-color:#bbb}
+  .rbtns button.sel{border:1.5px solid #333;color:#000;background:#fff !important}
+  .hdr{background:#fff;border:1px solid #999}
+  .anchor{display:block !important}
+  textarea{border:1px solid #ccc}
+  @page{size:A4;margin:12mm}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hdr">
+    <div class="sakura">🌸</div>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">C A U M O S</a> · PHÒNG MARKETING · <a href="/van-hoa" style="color:inherit">Văn hoá</a></div>
+    <h1 class="serif">Phiếu đánh giá năng lực nhân sự — Phương pháp AKS</h1>
+    <div class="sub">Attitude (Thái độ) · Knowledge (Kiến thức) · Skill (Kỹ năng) — Vị trí: Chuyên viên Vận hành TMĐT (Ecom Ops) &amp; Chuyên viên Digital Ads · Thang BARS 0–4 · Kết luận 3 mức: ĐẠT / SỬA / TỪ CHỐI</div>
+  </div>
+
+  <!-- 1. INFO -->
+  <div class="panel">
+    <h2><span class="badge-num">1</span> Thông tin kỳ đánh giá</h2>
+    <div class="grid">
+      <div class="field"><label>Họ tên nhân sự</label><input type="text" id="empName" placeholder="Nguyễn Văn A"></div>
+      <div class="field"><label>Người đánh giá</label><input type="text" id="rater" placeholder="CMO / Quản lý trực tiếp"></div>
+      <div class="field"><label>Ngày đánh giá</label><input type="date" id="evalDate"></div>
+      <div class="field"><label>Kỳ đánh giá</label>
+        <select id="period">
+          <option value="quy">Định kỳ — Quý</option>
+          <option value="6thang">Định kỳ — 6 tháng</option>
+          <option value="c1">Thử việc — Cửa 1 (Ngày 14)</option>
+          <option value="c2">Thử việc — Cửa 2 (Ngày 30)</option>
+          <option value="c3">Thử việc — Cửa 3 (Ngày 55)</option>
+        </select>
+      </div>
+      <div class="field"><label>Vị trí</label>
+        <div class="seg" id="posSeg">
+          <button data-v="vhs" class="on">Ecom Ops</button>
+          <button data-v="ads">Digital Ads</button>
+        </div>
+      </div>
+      <div class="field"><label>Cấp chuẩn so sánh (lộ trình IC)</label>
+        <div class="seg" id="lvlSeg">
+          <button data-v="1" class="on">IC1</button>
+          <button data-v="2">IC2</button>
+          <button data-v="3">IC3</button>
+          <button data-v="4">IC4</button>
+        </div>
+      </div>
+    </div>
+    <div class="lvlinfo" id="lvlInfo"></div>
+    <div class="wrow" style="margin-top:12px">
+      <div class="wbox"><div class="t">TRỌNG SỐ A — THÁI ĐỘ (%)</div><input type="number" id="wA" value="40" min="0" max="100"></div>
+      <div class="wbox"><div class="t">TRỌNG SỐ K — KIẾN THỨC (%)</div><input type="number" id="wK" value="20" min="0" max="100"></div>
+      <div class="wbox"><div class="t">TRỌNG SỐ S — KỸ NĂNG (%)</div><input type="number" id="wS" value="40" min="0" max="100"></div>
+      <div><span class="wsum" id="wSum">Tổng: 100%</span><div class="note">Trong mỗi nhóm: năng lực <b>D</b> (khác biệt) nặng ×2 so với <b>T</b> (nền tảng) — giữ đúng engine khung v2.</div></div>
+    </div>
+  </div>
+
+  <!-- 2. GUIDE -->
+  <div class="panel">
+    <h2><span class="badge-num">2</span> Cách chấm (đọc 1 phút)</h2>
+    <details class="guide">
+      <summary>Thang điểm 0–4 · Công thức · Quy tắc kết luận — bấm để mở</summary>
+      <table class="guide-tbl">
+        <tr><th style="width:90px">Điểm</th><th>Ý nghĩa hành vi (chấm theo hành vi QUAN SÁT ĐƯỢC + minh chứng, không cảm tính)</th></tr>
+        <tr><td><b>0 — Báo động</b></td><td>Vi phạm ranh giới (gian dối, phạm quy định claim/pháp lý, đối phó) HOẶC hoàn toàn không làm được. <b>Chấm 0 ở bất kỳ mục nào → kết luận tự động TỪ CHỐI.</b></td></tr>
+        <tr><td><b>1 — Cơ bản</b></td><td>Làm được khi cầm tay chỉ việc; xem mô tả hành vi Cấp 1 của từng năng lực.</td></tr>
+        <tr><td><b>2 — Trung bình</b></td><td>Tự làm đúng việc của mình theo chuẩn; xem mô tả Cấp 2.</td></tr>
+        <tr><td><b>3 — Nâng cao</b></td><td>Tự chủ chất lượng cao, kèm được người mới; xem mô tả Cấp 3.</td></tr>
+        <tr><td><b>4 — Chuyên gia</b></td><td>Thiết kế chuẩn/hệ thống cho team; xem mô tả Cấp 4.</td></tr>
+      </table>
+      <table class="guide-tbl">
+        <tr><th>Công thức</th><td><b>%Đạt</b> = MIN(cấp hiện tại ÷ cấp yêu cầu, 100%) — chặn trần, vượt cấp không cộng bù. <b>Điểm nhóm</b> = trung bình %Đạt có trọng số T=1/D=2. <b>Tổng</b> = A×wA + K×wK + S×wS.</td></tr>
+        <tr><th>Cổng chặn</th><td>Bất kỳ năng lực <b>T (nền tảng)</b> nào dưới cấp yêu cầu → không thể xếp ĐẠT, tối đa là SỬA (ưu tiên tuyệt đối, kể cả tổng điểm cao).</td></tr>
+        <tr><th>Kết luận</th><td><b>ĐẠT TỐT</b> ≥90% &amp; sạch cổng chặn (đủ điều kiện xét thăng tiến theo lộ trình IC/MG) · <b>ĐẠT</b> 80–89% · <b>SỬA</b> 65–79% hoặc vướng cổng chặn (kèm việc phải sửa) · <b>TỪ CHỐI</b> &lt;65% hoặc có điểm 0.</td></tr>
+      </table>
+    </details>
+  </div>
+
+  <!-- 3. GROUPS -->
+  <div id="groups"></div>
+
+  <!-- 4. RESULTS -->
+  <div class="panel">
+    <h2><span class="badge-num">4</span> Kết quả — Nhận định — Theo dõi</h2>
+    <div class="resgrid">
+      <div>
+        <div id="gauges"></div>
+        <div class="total-line"><span class="tv" id="totalPct">—</span><span class="sk">TỔNG ĐIỂM CÓ TRỌNG SỐ AKS</span></div>
+        <div class="prevrow noprint">
+          <span class="sk">Điểm kỳ trước (%):</span><input type="number" id="prevScore" min="0" max="100" placeholder="—">
+          <span class="delta" id="deltaOut"></span>
+        </div>
+        <div class="concl pending" id="conclBox"><span class="big">CHƯA ĐỦ DỮ LIỆU</span><div style="font-weight:400;font-size:12.5px">Chấm đủ 100% năng lực để hệ thống kết luận.</div></div>
+      </div>
+      <div class="radarbox">
+        <div class="sk" style="margin-bottom:4px">HỒ SƠ NĂNG LỰC THEO NHÓM GỐC (%ĐẠT)</div>
+        <div id="radar"></div>
+      </div>
+    </div>
+    <div style="margin-top:12px">
+      <div class="sk" style="margin-bottom:4px">CỔNG CHẶN &amp; KHOẢNG TRỐNG LỚN NHẤT (tự động)</div>
+      <ul class="gaplist" id="gapList"><li style="color:var(--muted)">Chưa có dữ liệu.</li></ul>
+    </div>
+    <div class="grid" style="margin-top:12px">
+      <div class="field"><label>Điểm mạnh — nhân bản (lệch tốt: khen &amp; scale)</label><textarea id="txtStrength" placeholder="Năng lực nào vượt chuẩn? Nhân bản thế nào?"></textarea></div>
+      <div class="field"><label>Điểm cần sửa — hành động cụ thể + deadline</label><textarea id="txtFix" placeholder="Gap nào? Ai hỗ trợ? Hạn bao giờ?"></textarea></div>
+      <div class="field"><label>Kế hoạch phát triển IDP 70–20–10 (70% qua việc · 20% kèm cặp · 10% đào tạo)</label><textarea id="txtIDP" placeholder="Giao việc gì (70)? Ai mentor (20)? Học gì (10)?"></textarea></div>
+    </div>
+  </div>
+
+  <!-- 5. PROBATION -->
+  <div class="panel" id="probPanel">
+    <h2><span class="badge-num">5</span> Điểm cửa thử việc <span id="probGateName" style="color:var(--blue)"></span></h2>
+    <div class="note" style="margin-bottom:8px">Cửa thử việc chấm theo 3 lăng kính. <b>B — Năng lực nghề</b> và <b>C — Văn hoá &amp; thái độ</b> tự lấy từ điểm K+S và A ở trên (có thể sửa tay). <b>A — Kết quả</b> nhập % thực tế so cam kết. Chuẩn: <b>ĐẠT ≥70 · SỬA 60–69 · DỪNG &lt;60</b>.</div>
+    <table class="prob-tbl">
+      <tr><th>Lăng kính</th><th>Điểm (%)</th><th>Trọng số</th><th>Nguồn</th></tr>
+      <tr><td><b>A. Kết quả</b> — % hoàn thành KPI/kế hoạch cam kết của giai đoạn</td><td><input type="number" id="probKQ" min="0" max="120" placeholder="85"></td><td id="probWkq">—</td><td>Nhập tay (số thật)</td></tr>
+      <tr><td><b>B. Năng lực nghề</b></td><td><input type="number" id="probNL" min="0" max="100"></td><td id="probWnl">—</td><td>Auto = điểm K + S</td></tr>
+      <tr><td><b>C. Văn hoá &amp; thái độ</b></td><td><input type="number" id="probVH" min="0" max="100"></td><td id="probWvh">—</td><td>Auto = điểm A</td></tr>
+    </table>
+    <div class="total-line"><span class="tv" id="probTotal">—</span><span class="sk">ĐIỂM CỬA (THANG 100)</span><span class="sconcl" id="probConcl" style="border-color:var(--line);color:var(--muted)">—</span></div>
+  </div>
+
+  <!-- SIGN -->
+  <div class="panel">
+    <h2><span class="badge-num">✓</span> Xác nhận</h2>
+    <div class="grid">
+      <div class="field"><label>Nhân sự được đánh giá (ký, ghi rõ họ tên)</label><div style="height:56px;border-bottom:1px dashed var(--muted)"></div></div>
+      <div class="field"><label>Người đánh giá / CMO (ký, ghi rõ họ tên)</label><div style="height:56px;border-bottom:1px dashed var(--muted)"></div></div>
+    </div>
+    <div class="note">Nguồn phương pháp: Khung năng lực Caumos v2 (BARS 0–4, T/D, cổng chặn Threshold) · Tư duy 4H &amp; 8 trụ cột văn hoá · Lộ trình thăng tiến IC/MG. Đánh giá theo trung bình cả chu kỳ, không xét lát cắt đơn lẻ; phân biệt "lệch xấu" (sửa) và "lệch tốt" (nhân bản).</div>
+  </div>
+
+</div>
+
+<!-- STICKY -->
+<div class="sticky noprint">
+  <div class="in">
+    <div><div class="sk">ĐÃ CHẤM</div><div class="sv" id="stProg">0/0</div></div>
+    <div><div class="sk">A — THÁI ĐỘ</div><div class="sv" id="stA">—</div></div>
+    <div><div class="sk">K — KIẾN THỨC</div><div class="sv" id="stK">—</div></div>
+    <div><div class="sk">S — KỸ NĂNG</div><div class="sv" id="stS">—</div></div>
+    <div><div class="sk">TỔNG</div><div class="sv" id="stT">—</div></div>
+    <span class="sconcl" id="stConcl" style="border-color:var(--line);color:var(--muted)">CHƯA ĐỦ</span>
+    <div class="spacer"></div>
+    <button class="btn ghost small" id="btnExport">⬇ Lưu kết quả (.json)</button>
+    <label class="btn ghost small" style="cursor:pointer">⬆ Mở lại kết quả<input type="file" id="btnImport" accept=".json" style="display:none"></label>
+    <button class="btn small" id="btnPrint">🖨 In / Xuất PDF</button>
+  </div>
+</div>
+
+<script>
+const DATA = {"vhs": [{"name": "Khả năng báo cáo rõ ràng", "ksa": "S", "measure": "Định lượng", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Cốt lõi", "bars": ["Nộp khi được nhắc; số liệu đôi lúc thiếu/sai.", "Tự nộp đúng hạn theo mẫu, số liệu chính xác.", "Có phân tích nguyên nhân + đề xuất; chỉ được người mới.", "Thiết kế lại dashboard; biến dữ liệu thành insight ra quyết định."], "aks": "S"}, {"name": "Giao tiếp hiệu quả", "ksa": "A/S", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Cốt lõi", "bars": ["Phản hồi chậm/chưa rõ ý.", "Phản hồi kịp thời, gãy gọn, đúng ý.", "Truyền đạt thuyết phục đa kênh; điều phối trao đổi nhóm.", "Chuẩn hoá giao tiếp nội bộ; xử lý tình huống nhạy cảm."], "aks": "A"}, {"name": "Khả năng làm việc nhóm", "ksa": "A", "measure": "Đa nguồn", "td": "T", "reqJ": 3, "reqS": 3, "cat": "Cốt lõi", "bars": ["Hoàn thành phần việc khi được phân công rõ.", "Cung cấp brief đúng chuẩn, ít gây lỗi phối hợp.", "Chủ động tháo nút thắt liên bộ phận; kèm người mới.", "Thiết kế lại cách phối hợp toàn phòng."], "aks": "A"}, {"name": "Tư duy sáng tạo", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Cốt lõi", "bars": ["Đưa ý tưởng phần lớn là biến thể có sẵn.", "Chủ động đề xuất ý tưởng mới khả thi.", "Mở hướng tiếp cận khác; truyền cách nghĩ cho đồng đội.", "Sinh concept đột phá đã kiểm chứng; định hình chất sáng tạo phòng."], "aks": "A"}, {"name": "Thấu hiểu khách hàng", "ksa": "K/A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 3, "reqS": 4, "cat": "Cốt lõi", "bars": ["Nêu nhu cầu khách hàng ở mức chung.", "Vận dụng insight vào nội dung/landing.", "Phân tầng chân dung theo hành vi; kèm người mới.", "Dự đoán dịch chuyển nhu cầu; thông điệp theo phân khúc."], "aks": "K"}, {"name": "Thấu hiểu ngành & sản phẩm", "ksa": "K", "measure": "Định lượng", "td": "T", "reqJ": 3, "reqS": 4, "cat": "Cốt lõi", "bars": ["Nắm thông tin cơ bản; còn tra cứu khi tư vấn.", "Trả lời đúng đặc tính + đối thủ chính không cần tra.", "Giải thích lợi thế theo phân khúc; kèm người mới.", "Dự báo dịch chuyển thị trường; điều chỉnh định vị trước."], "aks": "K"}, {"name": "Thấu hiểu nguồn lực doanh nghiệp", "ksa": "K", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Cốt lõi", "bars": ["Biết nguồn lực/công cụ cơ bản.", "Dùng đúng nguồn lực sẵn có cho việc của mình.", "Tối ưu phối hợp người–công cụ–ngân sách nhóm.", "Hoạch định & phân bổ nguồn lực toàn phòng."], "aks": "K"}, {"name": "Quản lý thời gian", "ksa": "S/A", "measure": "Định lượng", "td": "T", "reqJ": 3, "reqS": 3, "cat": "Cốt lõi", "bars": ["Thường trễ deadline, cần nhắc.", "Hoàn thành đúng hạn việc thường xuyên.", "Tự sắp ưu tiên khi tải cao; hiếm khi trễ.", "Thiết lập cơ chế quản lý tiến độ cho nhóm."], "aks": "S"}, {"name": "Khả năng ứng dụng AI", "ksa": "S", "measure": "Định lượng (sản phẩm)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Cốt lõi", "bars": ["Dùng AI cơ bản khi có hướng dẫn từng bước.", "Tự dùng AI cho tác vụ thường ngày.", "Thiết kế prompt/quy trình AI; kèm nhóm.", "Xây bộ công cụ/skill AI chuẩn hoá cho phòng."], "aks": "S"}, {"name": "Khả năng đa vai trò (kiêm nhiệm)", "ksa": "A/S", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Cốt lõi", "bars": ["Làm tốt vai trò chính; ngại nhận việc ngoài chuyên môn.", "Đảm nhiệm thêm 1 đầu việc kiêm nhiệm liên quan khi cần.", "Luân chuyển mượt giữa vai trò chính & kiêm nhiệm, giữ chất lượng cả hai.", "Dẫn dắt mô hình kiêm nhiệm; thiết kế phối hợp đa vai trò cho nhóm."], "aks": "A"}, {"name": "Tư duy 4H Canvas", "ksa": "A/S", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Văn hoá Caumos", "bars": ["Biết 4H nhưng cần nhắc; hay nhảy vào thực thi (Hand) sớm.", "Tự lập 4H Canvas đủ 4 lớp trước khi khởi động việc của mình.", "Dùng 4H phân rã mục tiêu theo hành trình KH; hướng dẫn người khác.", "Chuẩn hoá 4H Canvas cho phòng; dùng để gióng hướng nhiều dự án."], "aks": "A"}, {"name": "Marketing tử tế & chính trực thương hiệu", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 3, "reqS": 3, "cat": "Văn hoá Caumos", "bars": ["Tránh claim sai khi được nhắc; đôi lúc bị cuốn theo trend/giật tít.", "Chủ động từ chối thủ thuật thao túng; bám brand voice Đúng–Đủ–Đẹp.", "Phát hiện & ngăn nội dung/lối làm tổn hại định vị; giải thích lý do.", "Giữ chuẩn chính trực cho phòng; bảo vệ định vị bền vững trước áp lực số."], "aks": "A"}, {"name": "Thực thi chuẩn mực & QC đa tầng", "ksa": "S/A", "measure": "Định lượng + BARS", "td": "T", "reqJ": 3, "reqS": 4, "cat": "Văn hoá Caumos", "bars": ["Tự QC lỗi rõ khi có checklist; đôi khi bỏ bước lúc gấp.", "Tuân thủ QC 2 tầng (tự + chéo) đúng quy trình, không đi tắt.", "Nâng chuẩn QC, bắt lỗi tinh vi; kèm người mới giữ chuẩn.", "Thiết kế hệ thống QC đa tầng & tiêu chí chất lượng cho phòng."], "aks": "S"}, {"name": "Thử nghiệm có kiểm soát (Learn–Ship–Measure)", "ksa": "S/A", "measure": "Định lượng + BARS", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Văn hoá Caumos", "bars": ["Làm theo test khi được giao; chưa đặt chỉ số đo trước.", "Tự chạy A/B có thiết lập chỉ số; rút kết luận cơ bản.", "Thiết kế thử nghiệm tốt; dũng cảm dừng/chuyển hướng; dồn lực vào biến thắng.", "Xây văn hoá & quy trình thử nghiệm; tối ưu liên tục có hệ thống."], "aks": "S"}, {"name": "Tinh tế từng điểm chạm", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Văn hoá Caumos", "bars": ["Làm đúng yêu cầu cơ bản; còn lỗi nhỏ ở điểm chạm công khai.", "Chú ý chi tiết (chữ, màu, khoảng trắng, tone CSKH) đạt chuẩn.", "Nâng độ tinh tế, hiện diện trọn vẹn trong sản phẩm; nâng gu nhóm.", "Định hình chuẩn 'tinh tế thầm lặng' của thương hiệu."], "aks": "A"}, {"name": "Tự chủ & trách nhiệm đến cùng", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 3, "reqS": 4, "cat": "Văn hoá Caumos", "bars": ["Cần nhắc mới chủ động; dễ đổ lỗi hoàn cảnh khi trượt KPI.", "Tự lập kế hoạch, theo dõi, giải quyết phát sinh trong phạm vi mình.", "Đi theo dự án từ ý tưởng đến nghiệm thu; nhận trách nhiệm kết quả.", "Làm chủ trong bối cảnh phức tạp; là chỗ dựa trách nhiệm cho nhóm."], "aks": "A"}, {"name": "Ra quyết định dựa dữ liệu (không tin đồn)", "ksa": "A/K", "measure": "Định tính (BARS)", "td": "D", "reqJ": 3, "reqS": 4, "cat": "Văn hoá Caumos", "bars": ["Quyết theo cảm giác/tin đồn khi thiếu nhắc.", "Xác thực thông tin từ nguồn có thẩm quyền; dựa số liệu.", "Phân tích đa chiều, tách dữ kiện khỏi suy diễn; hướng dẫn người khác.", "Thiết lập kỷ luật ra quyết định dựa dữ liệu cho phòng."], "aks": "A"}, {"name": "Tính ổn định & cam kết bền vững", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 3, "reqS": 3, "cat": "Văn hoá Caumos", "bars": ["Hiệu suất dao động; cần môi trường ổn định để duy trì.", "Duy trì chất lượng ổn định qua các kỳ; cam kết mục tiêu dài hạn.", "Giữ ổn định cả khi áp lực/biến động; là điểm tựa cho nhóm.", "Kiến tạo sự ổn định hệ thống; truyền tinh thần bền vững cho phòng."], "aks": "A"}, {"name": "Xây dựng & phát triển gian hàng từ 0", "ksa": "S", "measure": "Định lượng (mốc tăng trưởng)", "td": "D", "reqJ": 2, "reqS": 4, "cat": "Chuyên môn", "bars": ["Thiết lập gian hàng cơ bản theo hướng dẫn (mở shop, đăng SP).", "Tự dựng gian hàng hoàn chỉnh: ngành hàng, listing, chính sách, sẵn sàng bán.", "Đưa gian hàng mới đạt mốc doanh thu/đơn ổn định; biết ưu tiên khi scale.", "Xây nhiều gian hàng từ 0 lên tăng trưởng bền vững; đúc playbook khởi tạo cho team."], "aks": "S"}, {"name": "Tối ưu listing & SEO sàn theo từng SKU", "ksa": "S", "measure": "Định lượng (hạng/traffic organic)", "td": "D", "reqJ": 3, "reqS": 4, "cat": "Chuyên môn", "bars": ["Điền đủ thông tin SP & từ khoá cơ bản theo mẫu.", "Tự tối ưu tiêu đề/ảnh/mô tả/từ khoá từng SKU đạt chuẩn.", "Đẩy SKU lên hạng tìm kiếm cao, tăng traffic organic; theo dõi & tinh chỉnh.", "Xây hệ thống SEO sàn & quy chuẩn listing cho toàn danh mục."], "aks": "S"}, {"name": "Định giá & quản lý danh mục SKU", "ksa": "S/K", "measure": "Định lượng (margin/chuyển đổi)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Chuyên môn", "bars": ["Cập nhật giá theo chỉ đạo.", "Tự đề xuất giá/combo theo margin mục tiêu cho SKU phụ trách.", "Tối ưu cơ cấu giá–combo–danh mục tăng AOV & lợi nhuận.", "Hoạch định chiến lược danh mục & định giá toàn shop theo vòng đời SP."], "aks": "S"}, {"name": "Quảng cáo nội sàn (Shopee/TikTok Shop Ads)", "ksa": "S", "measure": "Định lượng (ROAS nội sàn)", "td": "D", "reqJ": 3, "reqS": 4, "cat": "Chuyên môn", "bars": ["Bật camp nội sàn theo hướng dẫn.", "Tự set & tối ưu camp nội sàn đạt ROAS mục tiêu.", "Tối ưu đa hình thức (search/khám phá/live ads), phân bổ ngân sách hiệu quả.", "Xây chiến lược ads nội sàn & chuẩn tối ưu cho team."], "aks": "S"}, {"name": "Quảng cáo ngoại sàn & xây kênh vệ tinh (FB/Zalo)", "ksa": "S", "measure": "Định lượng (ROAS/CPA)", "td": "D", "reqJ": 2, "reqS": 3, "cat": "Chuyên môn", "bars": ["Hỗ trợ chạy ads ngoại sàn theo brief.", "Tự chạy FB/Zalo ads kéo traffic về sàn đạt CPA chấp nhận.", "Xây kênh vệ tinh (page/group/zalo) & phễu kéo traffic ổn định về sàn.", "Thiết kế hệ sinh thái kênh vệ tinh + ads ngoại sàn quy mô cho thương hiệu."], "aks": "S"}, {"name": "Booking KOC cho sàn", "ksa": "S/A", "measure": "Định lượng + BARS", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Chuyên môn", "bars": ["Liên hệ KOC theo danh sách có sẵn.", "Tự chốt KOC cơ bản; chọn dựa dữ liệu hiệu quả & đúng DNA (không cảm tính).", "Đàm phán & quản lý chiến dịch KOC kéo đơn về sàn; đo hiệu quả từng KOC.", "Xây mạng lưới & chiến lược KOC cho gian hàng."], "aks": "S"}, {"name": "Seeding nội sàn (review/Q&A/giỏ hàng)", "ksa": "S", "measure": "Định lượng", "td": "T", "reqJ": 3, "reqS": 3, "cat": "Chuyên môn", "bars": ["Seeding review/Q&A theo hướng dẫn.", "Tự lên kế hoạch seeding review/giỏ hàng/Q&A đúng chuẩn an toàn.", "Seeding nâng hạng & tỷ lệ chuyển đổi rõ rệt; kiểm soát rủi ro vi phạm.", "Thiết kế hệ thống seeding nội sàn bài bản cho team."], "aks": "S"}, {"name": "Seeding ngoại sàn & group cộng đồng", "ksa": "S", "measure": "Định lượng", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Chuyên môn", "bars": ["Đăng bài seeding theo kịch bản.", "Tự seeding ngoại sàn/group kéo nhận diện & traffic.", "Vận hành seeding đa kênh & nuôi group cộng đồng tạo đơn.", "Xây chiến lược seeding cộng đồng cho thương hiệu."], "aks": "S"}, {"name": "Lập kế hoạch vận hành theo tháng", "ksa": "S", "measure": "Định lượng + BARS", "td": "D", "reqJ": 3, "reqS": 4, "cat": "Chuyên môn", "bars": ["Liệt kê đầu việc tháng khi được hướng dẫn.", "Tự lập kế hoạch vận hành tháng (mục tiêu, chương trình, ngân sách, nguồn lực).", "Kế hoạch gắn mục tiêu PNL, có kịch bản & chốt kiểm soát; bám 4H Canvas.", "Hoạch định vận hành đa tháng/quý, dự báo & phân bổ nguồn lực tối ưu."], "aks": "S"}, {"name": "Quản lý đơn hàng, tồn kho & fulfillment (chống oversell)", "ksa": "S", "measure": "Định lượng (tỷ lệ lỗi đơn)", "td": "T", "reqJ": 3, "reqS": 4, "cat": "Chuyên môn", "bars": ["Xử lý đơn cơ bản theo quy trình.", "Tự quản đơn–tồn đúng quy trình, không để oversell/hết hàng bất ngờ.", "Tối ưu vòng quay tồn, giảm lỗi & hoàn; tuyệt đối không cắt bước xác nhận đơn.", "Thiết kế quy trình vận hành đơn–tồn chuẩn cho team."], "aks": "S"}, {"name": "Quản lý chương trình KM/sale sàn (Mega/mini/flash)", "ksa": "S", "measure": "Định lượng (DT sự kiện)", "td": "D", "reqJ": 2, "reqS": 4, "cat": "Chuyên môn", "bars": ["Setup KM theo hướng dẫn.", "Tự triển khai mini/flash sale, voucher đúng kế hoạch.", "Thiết kế chương trình Mega/mini sale tối ưu DT mà không phá giá chắp vá.", "Hoạch định lịch sale & chiến lược khuyến mãi cả năm theo nhịp sàn."], "aks": "S"}, {"name": "Quản lý sức khoẻ gian hàng & tuân thủ chính sách sàn", "ksa": "K/S", "measure": "Định lượng (rating/điểm phạt)", "td": "T", "reqJ": 3, "reqS": 4, "cat": "Chuyên môn", "bars": ["Biết các chỉ số sức khoẻ & quy định cơ bản.", "Tự giữ rating/điểm sức khoẻ đạt ngưỡng; không vi phạm chính sách.", "Chủ động phòng ngừa rủi ro phạt; xử lý khiếu nại/vi phạm; kèm người mới.", "Thiết lập cơ chế tuân thủ & giám sát sức khoẻ gian hàng cho team."], "aks": "K"}, {"name": "CSKH & quản lý đánh giá/review trên sàn", "ksa": "S/A", "measure": "Định lượng + BARS", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Chuyên môn", "bars": ["Trả lời chat cơ bản theo mẫu.", "Xử lý hỏi đáp/khiếu nại lịch sự đúng brand voice; phản hồi đúng SLA.", "Xử lý đánh giá xấu khéo léo, giữ & nâng rating; biến khách bất mãn thành hài lòng.", "Thiết kế quy trình CSKH & quản trị review cho gian hàng."], "aks": "S"}, {"name": "Phân tích dữ liệu sàn (funnel/traffic/conversion)", "ksa": "S/K", "measure": "Định lượng + BARS", "td": "D", "reqJ": 2, "reqS": 4, "cat": "Chuyên môn", "bars": ["Đọc được báo cáo cơ bản của sàn.", "Tự phân tích funnel/traffic/conversion, tìm điểm rơi.", "Truy nguyên nguyên nhân & ra hành động tối ưu dựa dữ liệu; dựng dashboard.", "Xây hệ thống đo lường & phân tích dữ liệu sàn cho team."], "aks": "S"}, {"name": "Phân tích thị trường, đối thủ & khách hàng", "ksa": "K/A", "measure": "Định tính (BARS)", "td": "D", "reqJ": 2, "reqS": 3, "cat": "Chuyên môn", "bars": ["Nắm thông tin đối thủ/thị trường mức chung khi được hỏi.", "Tự theo dõi đối thủ & nhu cầu khách, rút insight cho gian hàng.", "Phân tích định vị/giá/chiến thuật đối thủ; chuyển insight thành nước đi.", "Dự báo dịch chuyển thị trường & định hướng cạnh tranh cho gian hàng."], "aks": "K"}, {"name": "Đối soát doanh thu–chi phí, lãi/lỗ, KPI, PNL gian hàng", "ksa": "S/K", "measure": "Định lượng", "td": "D", "reqJ": 2, "reqS": 4, "cat": "Chuyên môn", "bars": ["Tổng hợp số liệu DT–CP theo mẫu.", "Tự đối soát DT–CP, tính lãi/lỗ cơ bản cho gian hàng.", "Lập & phân tích PNL, truy nguyên chi phí, đề xuất tối ưu biên lợi nhuận.", "Quản trị PNL nhiều gian hàng, dự báo tài chính & quyết định phân bổ."], "aks": "S"}, {"name": "Brief thiết kế", "ksa": "S", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Chuyên môn", "bars": ["Viết yêu cầu thiết kế cơ bản, còn thiếu thông tin.", "Brief đủ ý (mục tiêu, thông điệp, format, tham chiếu) để designer làm đúng 1 lần.", "Brief sắc, gắn insight & mục tiêu chuyển đổi; ít vòng sửa.", "Chuẩn hoá mẫu brief & quy trình phối hợp thiết kế cho team."], "aks": "S"}, {"name": "Kỹ năng content: cắt ghép video cơ bản", "ksa": "S", "measure": "Định lượng (sản phẩm)", "td": "T", "reqJ": 2, "reqS": 2, "cat": "Chuyên môn", "bars": ["Cắt ghép video đơn giản sau hướng dẫn.", "Tự dựng video ngắn cơ bản đạt yêu cầu cho sàn/kênh vệ tinh.", "Dựng video chỉn chu, tối ưu giữ chân theo nền tảng.", "Thiết lập chuẩn & template video cho team."], "aks": "S"}, {"name": "Xây dựng & nắm bắt quy trình", "ksa": "S", "measure": "Định lượng", "td": "T", "reqJ": 2, "reqS": 4, "cat": "Quản trị", "bars": ["Làm theo quy trình.", "Hệ thống hoá việc của mình.", "Thiết kế quy trình liên bộ phận.", "Chuẩn hoá quy trình toàn phòng."], "aks": "S"}, {"name": "Ra quyết định", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Quản trị", "bars": ["Quyết định có hướng dẫn.", "Tự quyết việc chuyên môn.", "Quyết định trong bất định có dữ liệu.", "Định hướng quyết định lớn cho phòng."], "aks": "A"}, {"name": "Tư duy thích nghi & linh hoạt", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 3, "reqS": 3, "cat": "Quản trị", "bars": ["Thích nghi khi được hướng dẫn.", "Tự điều chỉnh cách làm.", "Dẫn dắt thay đổi nhóm.", "Định hình năng lực thích ứng toàn phòng."], "aks": "A"}, {"name": "Quản trị khủng hoảng", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Quản trị", "bars": ["Nhận diện vấn đề.", "Xử lý sự cố thường gặp.", "Xử lý khủng hoảng phức tạp bình tĩnh.", "Thiết lập cơ chế phòng ngừa & ứng phó."], "aks": "A"}, {"name": "Tư duy chiến lược", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 1, "reqS": 3, "cat": "Quản trị", "bars": ["Hiểu mục tiêu chung.", "Liên hệ việc của mình với mục tiêu.", "Xây định hướng cho mảng.", "Kiến tạo tầm nhìn dài hạn."], "aks": "A"}, {"name": "Đào tạo & phát triển nhân sự", "ksa": "A/S", "measure": "Định tính (BARS)", "td": "T", "reqJ": 1, "reqS": 2, "cat": "Quản trị", "bars": ["Kèm việc đơn lẻ.", "Đào tạo theo tài liệu.", "Xây lộ trình phát triển.", "Thiết kế hệ thống đào tạo."], "aks": "A"}], "ads": [{"name": "Khả năng báo cáo rõ ràng", "ksa": "S", "measure": "Định lượng", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Cốt lõi", "bars": ["Nộp khi được nhắc; số liệu đôi lúc thiếu/sai.", "Tự nộp đúng hạn theo mẫu, số liệu chính xác.", "Có phân tích nguyên nhân + đề xuất; chỉ được người mới.", "Thiết kế lại dashboard; biến dữ liệu thành insight ra quyết định."], "aks": "S"}, {"name": "Giao tiếp hiệu quả", "ksa": "A/S", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Cốt lõi", "bars": ["Phản hồi chậm/chưa rõ ý.", "Phản hồi kịp thời, gãy gọn, đúng ý.", "Truyền đạt thuyết phục đa kênh; điều phối trao đổi nhóm.", "Chuẩn hoá giao tiếp nội bộ; xử lý tình huống nhạy cảm."], "aks": "A"}, {"name": "Khả năng làm việc nhóm", "ksa": "A", "measure": "Đa nguồn", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Cốt lõi", "bars": ["Hoàn thành phần việc khi được phân công rõ.", "Cung cấp brief đúng chuẩn, ít gây lỗi phối hợp.", "Chủ động tháo nút thắt liên bộ phận; kèm người mới.", "Thiết kế lại cách phối hợp toàn phòng."], "aks": "A"}, {"name": "Tư duy sáng tạo", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Cốt lõi", "bars": ["Đưa ý tưởng phần lớn là biến thể có sẵn.", "Chủ động đề xuất ý tưởng mới khả thi.", "Mở hướng tiếp cận khác; truyền cách nghĩ cho đồng đội.", "Sinh concept đột phá đã kiểm chứng; định hình chất sáng tạo phòng."], "aks": "A"}, {"name": "Thấu hiểu khách hàng", "ksa": "K/A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 3, "reqS": 4, "cat": "Cốt lõi", "bars": ["Nêu nhu cầu khách hàng ở mức chung.", "Vận dụng insight vào tệp target/thông điệp ads.", "Phân tầng chân dung theo hành vi; kèm người mới.", "Dự đoán dịch chuyển nhu cầu; thông điệp theo phân khúc."], "aks": "K"}, {"name": "Thấu hiểu ngành & sản phẩm", "ksa": "K", "measure": "Định lượng", "td": "T", "reqJ": 3, "reqS": 4, "cat": "Cốt lõi", "bars": ["Nắm thông tin cơ bản; còn tra cứu khi làm content ads.", "Trả lời đúng đặc tính + đối thủ chính không cần tra.", "Giải thích lợi thế theo phân khúc; kèm người mới.", "Dự báo dịch chuyển thị trường; điều chỉnh định vị trước."], "aks": "K"}, {"name": "Thấu hiểu nguồn lực doanh nghiệp", "ksa": "K", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Cốt lõi", "bars": ["Biết nguồn lực/công cụ cơ bản.", "Dùng đúng nguồn lực sẵn có cho việc của mình.", "Tối ưu phối hợp người–công cụ–ngân sách nhóm.", "Hoạch định & phân bổ nguồn lực toàn phòng."], "aks": "K"}, {"name": "Quản lý thời gian", "ksa": "S/A", "measure": "Định lượng", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Cốt lõi", "bars": ["Thường trễ deadline, cần nhắc.", "Hoàn thành đúng hạn việc thường xuyên.", "Tự sắp ưu tiên khi tải cao; hiếm khi trễ.", "Thiết lập cơ chế quản lý tiến độ cho nhóm."], "aks": "S"}, {"name": "Khả năng ứng dụng AI", "ksa": "S", "measure": "Định lượng (sản phẩm)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Cốt lõi", "bars": ["Dùng AI cơ bản khi có hướng dẫn từng bước.", "Tự dùng AI cho tác vụ thường ngày (viết angle, phân tích số).", "Thiết kế prompt/quy trình AI; kèm nhóm.", "Xây bộ công cụ/skill AI chuẩn hoá cho phòng."], "aks": "S"}, {"name": "Khả năng đa vai trò (kiêm nhiệm)", "ksa": "A/S", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Cốt lõi", "bars": ["Làm tốt vai trò chính; ngại nhận việc ngoài chuyên môn.", "Đảm nhiệm thêm 1 đầu việc kiêm nhiệm liên quan khi cần.", "Luân chuyển mượt giữa vai trò chính & kiêm nhiệm, giữ chất lượng cả hai.", "Dẫn dắt mô hình kiêm nhiệm; thiết kế phối hợp đa vai trò cho nhóm."], "aks": "A"}, {"name": "Tư duy 4H Canvas", "ksa": "A/S", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Văn hoá Caumos", "bars": ["Biết 4H nhưng cần nhắc; hay nhảy vào chạy ads (Hand) sớm.", "Tự lập 4H Canvas đủ 4 lớp trước khi khởi động chiến dịch.", "Dùng 4H phân rã mục tiêu theo hành trình KH; hướng dẫn người khác.", "Chuẩn hoá 4H Canvas cho phòng; dùng để gióng hướng nhiều dự án."], "aks": "A"}, {"name": "Marketing tử tế & chính trực thương hiệu", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 3, "reqS": 3, "cat": "Văn hoá Caumos", "bars": ["Tránh claim sai khi được nhắc; đôi lúc bị cuốn theo trend/giật tít để tăng CTR.", "Chủ động từ chối thủ thuật thao túng; bám claim hợp lệ Caumos (khử mùi/không cồn/IPMP/72h).", "Phát hiện & ngăn nội dung/ads chạm ranh giới claim; giải thích lý do cho team.", "Giữ chuẩn chính trực cho phòng; bảo vệ định vị bền vững trước áp lực số."], "aks": "A"}, {"name": "Thực thi chuẩn mực & QC đa tầng", "ksa": "S/A", "measure": "Định lượng + BARS", "td": "T", "reqJ": 3, "reqS": 4, "cat": "Văn hoá Caumos", "bars": ["Tự QC lỗi rõ khi có checklist; đôi khi bỏ bước lúc gấp (setup camp, tracking).", "Tuân thủ QC 2 tầng (tự + chéo) trước khi bật ngân sách, không đi tắt.", "Nâng chuẩn QC, bắt lỗi tinh vi (pixel, UTM, đối tượng); kèm người mới giữ chuẩn.", "Thiết kế hệ thống QC đa tầng & checklist launch ads cho phòng."], "aks": "S"}, {"name": "Thử nghiệm có kiểm soát (Learn–Ship–Measure)", "ksa": "S/A", "measure": "Định lượng + BARS", "td": "D", "reqJ": 3, "reqS": 4, "cat": "Văn hoá Caumos", "bars": ["Chạy test khi được giao; chưa đặt chỉ số & mẫu đủ trước khi kết luận.", "Tự thiết kế A/B (1 biến), đặt chỉ số & ngưỡng dừng; rút kết luận cơ bản.", "Thiết kế thử nghiệm tốt; dừng biến kém sớm, dồn ngân sách vào biến thắng.", "Xây văn hoá & quy trình test-and-scale; tối ưu liên tục có hệ thống."], "aks": "S"}, {"name": "Tinh tế từng điểm chạm", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Văn hoá Caumos", "bars": ["Làm đúng yêu cầu cơ bản; còn lỗi nhỏ ở điểm chạm công khai (caption, ảnh ads).", "Chú ý chi tiết (chữ, màu, khoảng trắng, tone) đạt chuẩn thương hiệu.", "Nâng độ tinh tế trong ad/landing; nâng gu nhóm.", "Định hình chuẩn 'tinh tế thầm lặng' của thương hiệu trong quảng cáo."], "aks": "A"}, {"name": "Tự chủ & trách nhiệm đến cùng", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 3, "reqS": 4, "cat": "Văn hoá Caumos", "bars": ["Cần nhắc mới chủ động; dễ đổ lỗi thuật toán/thị trường khi trượt KPI.", "Tự lập kế hoạch, theo dõi, xử lý phát sinh trong phạm vi mình.", "Đi theo chiến dịch từ brief đến nghiệm thu số; nhận trách nhiệm ROAS/CIR.", "Làm chủ trong bối cảnh phức tạp; là chỗ dựa trách nhiệm cho nhóm."], "aks": "A"}, {"name": "Ra quyết định dựa dữ liệu (không tin đồn)", "ksa": "A/K", "measure": "Định tính (BARS)", "td": "D", "reqJ": 3, "reqS": 4, "cat": "Văn hoá Caumos", "bars": ["Quyết tăng/giảm ngân sách theo cảm giác khi thiếu nhắc.", "Xác thực bằng số đủ mẫu, đủ thời gian trước khi quyết.", "Phân tích đa chiều, tách dữ kiện khỏi suy diễn; hướng dẫn người khác.", "Thiết lập kỷ luật ra quyết định dựa dữ liệu cho phòng."], "aks": "A"}, {"name": "Tính ổn định & cam kết bền vững", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 3, "reqS": 3, "cat": "Văn hoá Caumos", "bars": ["Hiệu suất dao động; cần môi trường ổn định để duy trì.", "Duy trì chất lượng ổn định qua các kỳ; cam kết mục tiêu dài hạn.", "Giữ ổn định cả khi áp lực/biến động; là điểm tựa cho nhóm.", "Kiến tạo sự ổn định hệ thống; truyền tinh thần bền vững cho phòng."], "aks": "A"}, {"name": "Cấu trúc & vận hành tài khoản QC đa kênh (Meta/TikTok/Google)", "ksa": "S", "measure": "Định lượng", "td": "D", "reqJ": 3, "reqS": 4, "cat": "Chuyên môn", "bars": ["Lên camp/nhóm QC theo hướng dẫn; hay sai cấu trúc, đặt tên lộn xộn.", "Tự dựng cấu trúc tài khoản chuẩn (chiến dịch/nhóm/quảng cáo), đặt tên & phân tầng ngân sách hợp lý trên 1 kênh.", "Vận hành đa kênh ổn định, cấu trúc tối ưu cho test & scale; kèm người mới.", "Thiết kế chuẩn cấu trúc tài khoản & quy ước vận hành cho cả team đa kênh."], "aks": "S"}, {"name": "Tối ưu chuyển đổi & bidding (ROAS/CPA/CIR)", "ksa": "S", "measure": "Định lượng (ROAS/CPA/CIR)", "td": "D", "reqJ": 3, "reqS": 4, "cat": "Chuyên môn", "bars": ["Theo dõi chỉ số có hướng dẫn; chỉnh giá thầu theo cảm tính.", "Tự tối ưu đạt ROAS/CPA mục tiêu trên nhóm chiến dịch phụ trách.", "Tối ưu đa mục tiêu/đa kênh phức tạp, giữ hiệu quả khi scale ngân sách.", "Thiết lập chiến lược bidding & chuẩn tối ưu chuyển đổi cho team."], "aks": "S"}, {"name": "Quản lý & phân bổ ngân sách (đèn Xanh/Vàng/Đỏ, CP MKT ≤25%)", "ksa": "S", "measure": "Định lượng (CIR/CP MKT)", "td": "D", "reqJ": 2, "reqS": 4, "cat": "Chuyên môn", "bars": ["Chi tiêu trong hạn được giao; chưa gắn chi tiêu với CIR/PNL.", "Tự quản ngân sách nhóm chiến dịch trong trần CP MKT, đọc đúng đèn Xanh/Vàng/Đỏ.", "Phân bổ tối ưu đa hạng mục/đa kênh theo hiệu quả cả chu kỳ; đề xuất cắt/scale kịp thời.", "Hoạch định & kiểm soát ngân sách–PNL performance cho thương hiệu (CP MKT ≤25%)."], "aks": "S"}, {"name": "Tracking & đo lường (Pixel/CAPI/GA4/UTM/attribution)", "ksa": "S/K", "measure": "Định lượng (độ chính xác dữ liệu)", "td": "D", "reqJ": 3, "reqS": 4, "cat": "Chuyên môn", "bars": ["Gắn pixel/UTM cơ bản theo hướng dẫn; hay sai/thiếu sự kiện.", "Tự thiết lập pixel/CAPI/GA4/UTM đúng, kiểm tra sự kiện chuyển đổi khớp.", "Chẩn đoán & vá lỗ hổng đo lường (mất tín hiệu, trùng đếm); chọn mô hình attribution phù hợp.", "Thiết kế hệ đo lường & attribution chuẩn cho toàn kênh; đảm bảo dữ liệu ra quyết định."], "aks": "S"}, {"name": "Audience & retargeting (tệp, lookalike, exclusion, phễu)", "ksa": "S", "measure": "Định lượng (CVR theo tệp)", "td": "D", "reqJ": 3, "reqS": 4, "cat": "Chuyên môn", "bars": ["Tạo tệp cơ bản theo mẫu; chưa dựng phễu/loại trừ.", "Tự xây tệp core/lookalike/retarget & exclusion đúng phễu cho nhóm phụ trách.", "Thiết kế phễu đa tầng (TOF/MOF/BOF), tối ưu tệp theo dữ liệu chuyển đổi.", "Xây chiến lược audience & hệ phễu retargeting cho thương hiệu."], "aks": "S"}, {"name": "Thử nghiệm sáng tạo (creative testing: hook/angle/format)", "ksa": "S/A", "measure": "Định lượng + BARS", "td": "D", "reqJ": 3, "reqS": 4, "cat": "Chuyên môn", "bars": ["Chạy creative có sẵn; chưa test hook/angle có cấu trúc.", "Tự lên ma trận test hook/angle/format, đặt chỉ số & mẫu đủ; đọc winner.", "Hệ thống hoá test sáng tạo, tìm & nhân bản 'creative thắng'; brief lại insight sắc.", "Xây thư viện angle/hook & quy trình creative-testing chuẩn cho team."], "aks": "S"}, {"name": "Brief creative cho performance (phối hợp content/editor theo insight)", "ksa": "S", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Chuyên môn", "bars": ["Viết yêu cầu sơ sài, thiếu insight/pain point → nhiều vòng sửa.", "Brief đủ ý (insight, pain point, hook, format, tham chiếu) để content/editor làm đúng 1 lần.", "Brief sắc gắn mục tiêu chuyển đổi & 'ngòi nổ'; ít vòng sửa, ra creative test được ngay.", "Chuẩn hoá mẫu brief & quy trình phối hợp creative cho team performance."], "aks": "S"}, {"name": "Tối ưu landing page & phễu chuyển đổi (CRO)", "ksa": "S", "measure": "Định lượng (CVR landing)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Chuyên môn", "bars": ["Nhận biết landing lỗi cơ bản (tốc độ, đứt phễu) khi được chỉ.", "Tự đề xuất & phối hợp chỉnh landing/form/checkout theo chuẩn CRO cho SP phụ trách.", "Chạy A/B landing, tối ưu CVR & tốc độ; truy điểm rơi phễu ra hành động.", "Thiết kế hệ landing & quy chuẩn CRO cho thương hiệu."], "aks": "S"}, {"name": "Quảng cáo nội sàn (TikTok Shop/Shopee Ads, GMV Max)", "ksa": "S", "measure": "Định lượng (ROAS nội sàn)", "td": "D", "reqJ": 3, "reqS": 4, "cat": "Chuyên môn", "bars": ["Bật camp nội sàn theo hướng dẫn.", "Tự set & tối ưu camp nội sàn (search/khám phá/GMV Max) đạt ROAS mục tiêu.", "Tối ưu đa hình thức & phân bổ ngân sách nội sàn hiệu quả; phối hợp vận hành sàn.", "Xây chiến lược ads nội sàn & chuẩn tối ưu cho team."], "aks": "S"}, {"name": "Quảng cáo Google (Search/PMax/YouTube)", "ksa": "S", "measure": "Định lượng (ROAS/CPA)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Chuyên môn", "bars": ["Hỗ trợ set camp Google theo brief.", "Tự chạy Search/PMax cơ bản đạt CPA chấp nhận; quản từ khoá & phủ định.", "Tối ưu PMax/YouTube theo tín hiệu chuyển đổi; phối hợp đo lường đa kênh.", "Thiết kế chiến lược Google Ads tích hợp toàn phễu cho thương hiệu."], "aks": "S"}, {"name": "Phân tích funnel & báo cáo hiệu suất (dashboard ra hành động)", "ksa": "S/K", "measure": "Định lượng + BARS", "td": "D", "reqJ": 3, "reqS": 4, "cat": "Chuyên môn", "bars": ["Đọc được báo cáo nền tảng cơ bản.", "Tự phân tích funnel (impression→click→CVR→đơn), tìm điểm rơi.", "Truy nguyên nguyên nhân & ra hành động tối ưu dựa dữ liệu; dựng dashboard.", "Xây hệ thống đo lường & phân tích hiệu suất ads cho team."], "aks": "S"}, {"name": "Đối soát chi phí–doanh thu, PNL chiến dịch (CIR/ROAS/biên)", "ksa": "S/K", "measure": "Định lượng", "td": "D", "reqJ": 2, "reqS": 4, "cat": "Chuyên môn", "bars": ["Tổng hợp chi phí ads theo mẫu.", "Tự đối soát chi phí–DT, tính CIR/ROAS cơ bản cho nhóm chiến dịch.", "Lập & phân tích PNL chiến dịch, truy nguyên chi phí, đề xuất tối ưu biên.", "Quản trị PNL nhiều kênh/thương hiệu, dự báo & quyết định phân bổ ngân sách."], "aks": "S"}, {"name": "Tuân thủ chính sách QC & pháp lý ads (policy nền tảng + từ khoá cấm + giấy phép QC)", "ksa": "K/S", "measure": "Định lượng (tỷ lệ QC bị từ chối/khoá tài khoản)", "td": "T", "reqJ": 3, "reqS": 4, "cat": "Chuyên môn", "bars": ["Biết vài quy định cơ bản; vẫn để lọt từ khoá/hình ảnh cấm.", "Tự soát nội dung ads theo checklist claim & policy (không 'trị/diệt khuẩn/số 1'…); giữ tài khoản sạch.", "Chủ động phòng ngừa reject/khoá; xử lý kháng nghị; kèm người mới giữ chuẩn tuân thủ.", "Thiết lập cơ chế kiểm duyệt & tuân thủ ads (claim + pháp lý + policy) cho team."], "aks": "K"}, {"name": "Phân tích thị trường, đối thủ & khách hàng (ad-library teardown)", "ksa": "K/A", "measure": "Định tính (BARS)", "td": "D", "reqJ": 2, "reqS": 3, "cat": "Chuyên môn", "bars": ["Nắm thông tin đối thủ mức chung khi được hỏi.", "Tự teardown ad-library đối thủ, rút angle/hook & insight cho chiến dịch.", "Phân tích định vị/giá/chiến thuật ads đối thủ; chuyển insight thành nước đi.", "Dự báo dịch chuyển thị trường & định hướng cạnh tranh ads cho thương hiệu."], "aks": "K"}, {"name": "Kỹ năng content: cắt ghép video ads cơ bản", "ksa": "S", "measure": "Định lượng (sản phẩm)", "td": "T", "reqJ": 2, "reqS": 2, "cat": "Chuyên môn", "bars": ["Cắt ghép video đơn giản sau hướng dẫn.", "Tự dựng video ads ngắn cơ bản đạt yêu cầu để test hook.", "Dựng video chỉn chu, tối ưu giữ chân 3s đầu theo nền tảng.", "Thiết lập chuẩn & template video ads cho team."], "aks": "S"}, {"name": "Xây dựng & nắm bắt quy trình", "ksa": "S", "measure": "Định lượng", "td": "T", "reqJ": 2, "reqS": 4, "cat": "Quản trị", "bars": ["Làm theo quy trình.", "Hệ thống hoá việc của mình.", "Thiết kế quy trình liên bộ phận.", "Chuẩn hoá quy trình toàn phòng."], "aks": "S"}, {"name": "Ra quyết định", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Quản trị", "bars": ["Quyết định có hướng dẫn.", "Tự quyết việc chuyên môn.", "Quyết định trong bất định có dữ liệu.", "Định hướng quyết định lớn cho phòng."], "aks": "A"}, {"name": "Tư duy thích nghi & linh hoạt", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 3, "reqS": 3, "cat": "Quản trị", "bars": ["Thích nghi khi được hướng dẫn.", "Tự điều chỉnh cách làm khi thuật toán/chính sách đổi.", "Dẫn dắt thay đổi nhóm.", "Định hình năng lực thích ứng toàn phòng."], "aks": "A"}, {"name": "Quản trị khủng hoảng (khoá tài khoản/policy/tụt hiệu suất)", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 2, "reqS": 3, "cat": "Quản trị", "bars": ["Nhận diện vấn đề.", "Xử lý sự cố thường gặp (reject QC, tụt ROAS).", "Xử lý khủng hoảng phức tạp bình tĩnh (khoá BM, mất tracking).", "Thiết lập cơ chế phòng ngừa & ứng phó (backup tài khoản/tracking)."], "aks": "A"}, {"name": "Tư duy chiến lược", "ksa": "A", "measure": "Định tính (BARS)", "td": "T", "reqJ": 1, "reqS": 3, "cat": "Quản trị", "bars": ["Hiểu mục tiêu chung.", "Liên hệ việc của mình với mục tiêu (đơn/ngày, CP MKT).", "Xây định hướng ads cho mảng/thương hiệu.", "Kiến tạo tầm nhìn dài hạn."], "aks": "A"}, {"name": "Đào tạo & phát triển nhân sự", "ksa": "A/S", "measure": "Định tính (BARS)", "td": "T", "reqJ": 1, "reqS": 2, "cat": "Quản trị", "bars": ["Kèm việc đơn lẻ.", "Đào tạo theo tài liệu.", "Xây lộ trình phát triển.", "Thiết kế hệ thống đào tạo."], "aks": "A"}]};
+const AKS_META = {
+  A:{name:"ATTITUDE · Thái độ & Văn hoá",desc:"Tư duy 4H, chính trực thương hiệu, tự chủ – trách nhiệm, tinh tế điểm chạm, hợp tác"},
+  K:{name:"KNOWLEDGE · Kiến thức",desc:"Khách hàng, ngành & sản phẩm, nguồn lực, chính sách sàn/nền tảng, ra quyết định dựa dữ liệu"},
+  S:{name:"SKILL · Kỹ năng",desc:"Kỹ năng thực thi chuyên môn theo vị trí — đo bằng sản phẩm & chỉ số định lượng"}
+};
+const GATES = {c1:{name:"Cửa 1 · Ngày 14 — VÀO GUỒNG",w:[.25,.40,.35]},c2:{name:"Cửa 2 · Ngày 30 — THỰC CHIẾN",w:[.40,.35,.25]},c3:{name:"Cửa 3 · Ngày 55 — CHỐT PHƯƠNG ÁN",w:[.50,.30,.20]}};
+const CATS = ["Cốt lõi","Văn hoá Caumos","Chuyên môn","Quản trị"];
+
+// Lộ trình IC — tên cấp & điều kiện định lượng (từ sheet Lộ trình thăng tiến của từng vị trí)
+const LVLS = {
+  vhs: {
+    1:{tag:"IC1 · Junior", name:"IC-LVL1 — Vận hành viên", cond:"Cầm tốt 1 shop: đạt DT min + biên lãi ≥ ngưỡng + rating ≥4.7 / sức khoẻ gian hàng \"tốt\". Cổng: đạt mọi Threshold cột Junior."},
+    2:{tag:"IC2 · Senior", name:"IC-LVL2 — Vận hành viên cấp cao", cond:"≥2 shop (cùng/khác nền tảng), MỖI shop đạt ngưỡng DT + biên + health. Tối thiểu 4–6 tháng ở IC1."},
+    3:{tag:"IC3 · Growth", name:"IC-LVL3 — Chuyên gia tăng trưởng", cond:"IC2 + tự kéo traffic ngoại sàn bền vững; Ads ngoại sàn, kênh vệ tinh, phân tích dữ liệu cấp 3–4. Tối thiểu 6 tháng ở IC2 + 3 tháng chứng minh ngoại sàn."},
+    4:{tag:"IC4 · Expert", name:"IC-LVL4 — Chuyên gia trưởng", cond:"Sở hữu playbook/chuẩn hoá, mentor ≥2 người, làm chủ chiến lược 1 ngành hàng; hành vi cấp 4 ở các năng lực D + thiết lập chuẩn cho team. Tối thiểu 9–12 tháng ở IC3."}
+  },
+  ads: {
+    1:{tag:"IC1 · Junior", name:"IC-LVL1 — Chuyên viên Ads mới", cond:"Cầm tốt 1 kênh / 1 nhóm chiến dịch: đạt DT–đơn min + ROAS mục tiêu. Cổng: ≥85% đánh giá năng lực cấp Junior."},
+    2:{tag:"IC2 · Senior", name:"IC-LVL2 — Chuyên viên Ads cao cấp/thâm niên", cond:"Cầm ≥2 kênh / nhiều nhóm chiến dịch, mỗi kênh đạt DT–ROAS–CIR mục tiêu; ≥90% đánh giá năng lực cấp Senior. Tối thiểu 4–6 tháng ở IC1."},
+    3:{tag:"IC3 · Growth", name:"IC-LVL3 — Chuyên viên tăng trưởng (Growth)", cond:"IC2 + scale ngân sách giữ hiệu quả (CP MKT ≤25% cả chu kỳ); Tối ưu chuyển đổi, Tracking, Phân tích funnel cấp 3–4. Tối thiểu 6 tháng ở IC2 + 3 tháng chứng minh."},
+    4:{tag:"IC4 · Expert", name:"IC-LVL4 — Chuyên gia Performance trưởng", cond:"Tài liệu hoá & chuẩn hoá playbook ads, mentor ≥2 người; hành vi cấp 4 ở các năng lực D + thiết lập chuẩn tối ưu cho team. Tối thiểu 9–12 tháng ở IC3."}
+  }
+};
+// Quy tắc cấp yêu cầu theo IC: IC1 = cột Junior · IC2 = cột Senior · IC3 = Senior + mọi năng lực D nâng cấp 4 · IC4 = IC3 + nhóm Quản trị tối thiểu cấp 3
+
+let state = {pos:"vhs", lvl:1, ratings:{}, evid:{}, probNLtouched:false, probVHtouched:false};
+
+const $ = id => document.getElementById(id);
+document.getElementById('evalDate').valueAsDate = new Date();
+
+function comps(){ return DATA[state.pos]; }
+function key(c){ return state.pos+"||"+c.name; }
+function req(c){
+  let r = (state.lvl===1) ? c.reqJ : c.reqS;
+  if(state.lvl>=3 && c.td==="D") r = Math.max(r,4);
+  if(state.lvl>=4 && c.cat==="Quản trị") r = Math.max(r,3);
+  return r;
+}
+function lvlTag(){ return LVLS[state.pos][state.lvl].tag; }
+function updateLvlInfo(){
+  const L = LVLS[state.pos][state.lvl];
+  $('lvlInfo').innerHTML = `<b>${L.name}</b> — chuẩn năng lực đang so sánh.<div class="cond">Điều kiện định lượng đi kèm (theo lộ trình thăng tiến, duy trì ≥3–6 tháng): ${L.cond}</div>`;
+}
+
+function render(){
+  updateLvlInfo();
+  const box = $('groups'); box.innerHTML = "";
+  ["A","K","S"].forEach((g,gi)=>{
+    const list = comps().filter(c=>c.aks===g);
+    const grp = document.createElement('div'); grp.className="group"; grp.id="grp"+g;
+    grp.innerHTML = `<div class="ghead">
+        <div class="gletter">${g}</div>
+        <div class="gt"><b>${AKS_META[g].name}</b> · <span class="s">${list.length} năng lực · trọng số <span id="ghw${g}"></span>%</span><div class="s">${AKS_META[g].desc}</div></div>
+        <div class="gscore"><div class="v" id="ghs${g}">—</div><div class="l">điểm nhóm</div></div>
+      </div><div class="gbar"><i id="ghb${g}" style="width:0%"></i></div>`;
+    list.forEach(c=>grp.appendChild(compRow(c)));
+    box.appendChild(grp);
+  });
+  recalc();
+}
+
+function compRow(c){
+  const k = key(c), cur = state.ratings[k], r = req(c);
+  const div = document.createElement('div'); div.className="comp"; div.dataset.k=k;
+  const btns = [0,1,2,3,4].map(v=>`<button data-v="${v}" class="${cur===v?('sel'+(v===0?' zero':'')):''}" title="${v===0?'Báo động/vi phạm ranh giới':('Cấp '+v)}">${v}</button>`).join("");
+  const anchorTxt = (cur>=1&&cur<=4&&c.bars)?`<b>Cấp ${cur}:</b> ${c.bars[cur-1]}`:(cur===0?`<b>Cấp 0:</b> Vi phạm ranh giới hoặc hoàn toàn không làm được — rà soát ngay.`:"");
+  const barsRows = c.bars? c.bars.map((t,i)=>`<div class="brow"><div class="bl">Cấp ${i+1}</div><div>${t}</div></div>`).join("") : "";
+  div.innerHTML = `<div class="crow">
+      <div class="cinfo">
+        <div class="cname">${c.name}</div>
+        <div class="ctags">
+          <span class="tag">${c.cat}</span>
+          <span class="tag td-${c.td}" title="${c.td==='D'?'Differentiating — khác biệt, trọng số ×2':'Threshold — nền tảng, có cổng chặn'}">${c.td==='D'?'D ×2':'T ×1'}</span>
+          <span class="tag">${c.ksa}</span>
+          <span class="tag req">Yêu cầu: cấp ${r}</span>
+        </div>
+        <div class="ctools noprint">
+          <button class="lnk" data-act="bars">📖 Thang hành vi 4 cấp</button>
+          <button class="lnk" data-act="evid">📝 Minh chứng</button>
+        </div>
+        <div class="barsfull">${barsRows}</div>
+        <div class="evid ${state.evid[k]?'show':''}"><input type="text" placeholder="Minh chứng/số liệu quan sát được…" value="${(state.evid[k]||'').replace(/"/g,'&quot;')}"></div>
+      </div>
+      <div class="crate">
+        <div class="rbtns">${btns}</div>
+        <div class="anchor ${anchorTxt?'show':''}">${anchorTxt}</div>
+      </div>
+      <div class="cstat" id="stat-${cssId(k)}"></div>
+    </div>`;
+  div.querySelectorAll('.rbtns button').forEach(b=>b.addEventListener('click',()=>{
+    state.ratings[k] = +b.dataset.v; refreshRow(div,c); recalc();
+  }));
+  div.querySelector('[data-act=bars]').addEventListener('click',e=>{div.querySelector('.barsfull').classList.toggle('show');});
+  div.querySelector('[data-act=evid]').addEventListener('click',e=>{div.querySelector('.evid').classList.toggle('show');});
+  div.querySelector('.evid input').addEventListener('input',e=>{state.evid[k]=e.target.value;});
+  refreshRow(div,c);
+  return div;
+}
+function cssId(s){return s.replace(/[^a-zA-Z0-9]/g,"_");}
+
+function refreshRow(div,c){
+  const k=key(c), cur=state.ratings[k], r=req(c);
+  div.querySelectorAll('.rbtns button').forEach(b=>{
+    b.classList.toggle('sel', cur===+b.dataset.v);
+    b.classList.toggle('zero', cur===0 && +b.dataset.v===0);
+  });
+  const an = div.querySelector('.anchor');
+  if(cur===undefined){an.classList.remove('show');an.innerHTML="";}
+  else{
+    const t = cur===0?`<b>Cấp 0:</b> Vi phạm ranh giới hoặc hoàn toàn không làm được — rà soát ngay.`:`<b>Cấp ${cur}:</b> ${c.bars?c.bars[cur-1]:""}`;
+    an.innerHTML=t; an.classList.add('show');
+  }
+  const st = div.querySelector('.cstat');
+  div.classList.remove('gap-bad','done-ok');
+  if(cur===undefined){ st.innerHTML=`<div class="pct" style="color:var(--muted)">—</div><div class="slabel" style="color:var(--muted)">chưa chấm</div>`; return;}
+  const pct = Math.min(cur/r,1);
+  let cls,lab;
+  if(cur===0){cls="zero";lab='<span class="slabel bad">BÁO ĐỘNG</span>'; div.classList.add('gap-bad');}
+  else if(cur<r){cls="bad";lab='<span class="slabel bad">Dưới yêu cầu −'+(r-cur)+'</span>'; div.classList.add('gap-bad');}
+  else if(cur>r){cls="ok";lab='<span class="slabel over">Vượt chuẩn +'+(cur-r)+' 🌟</span>'; div.classList.add('done-ok');}
+  else{cls="ok";lab='<span class="slabel ok">Đạt chuẩn</span>'; div.classList.add('done-ok');}
+  st.innerHTML=`<div class="pct ${cls}">${Math.round(pct*100)}%</div>${lab}`;
+}
+
+function groupScore(g){
+  const list = comps().filter(c=>c.aks===g);
+  let num=0, den=0, rated=0;
+  list.forEach(c=>{
+    const cur = state.ratings[key(c)];
+    if(cur===undefined) return;
+    rated++;
+    const w = c.td==="D"?2:1;
+    num += Math.min(cur/req(c),1)*w; den += w;
+  });
+  return {score: den? num/den : null, rated, total:list.length};
+}
+
+function recalc(){
+  // weights
+  let wA=+$('wA').value||0, wK=+$('wK').value||0, wS=+$('wS').value||0;
+  const sum=wA+wK+wS;
+  $('wSum').textContent="Tổng: "+sum+"%"; $('wSum').className="wsum"+(sum!==100?" bad":"");
+  const W={A:wA/100,K:wK/100,S:wS/100};
+
+  let totRated=0, totAll=0, gs={};
+  ["A","K","S"].forEach(g=>{
+    gs[g]=groupScore(g); totRated+=gs[g].rated; totAll+=gs[g].total;
+    const v = gs[g].score;
+    $('ghw'+g).textContent = Math.round(W[g]*100);
+    $('ghs'+g).textContent = v===null?"—":Math.round(v*100)+"%";
+    $('ghb'+g).style.width = (v===null?0:v*100)+"%";
+    $('ghb'+g).style.background = v!==null&&v<0.8?"var(--plum)":"var(--blue)";
+    $('st'+g).textContent = v===null?"—":Math.round(v*100)+"%";
+  });
+  $('stProg').textContent = totRated+"/"+totAll;
+
+  const complete = totRated===totAll && totAll>0 && sum===100;
+  let total=null;
+  if(gs.A.score!==null&&gs.K.score!==null&&gs.S.score!==null&&sum===100){
+    total = gs.A.score*W.A + gs.K.score*W.K + gs.S.score*W.S;
+  }
+  $('totalPct').textContent = total===null?"—":Math.round(total*100)+"%";
+  $('stT').textContent = total===null?"—":Math.round(total*100)+"%";
+
+  // gauges
+  $('gauges').innerHTML = ["A","K","S"].map(g=>{
+    const v=gs[g].score;
+    return `<div class="gauge"><div class="gl"><span>${g} — ${AKS_META[g].name.split("·")[1].trim()} (${Math.round(W[g]*100)}%)</span><span>${v===null?"—":Math.round(v*100)+"%"}</span></div><div class="gtr"><div class="gfill" style="width:${v===null?0:v*100}%;background:${v!==null&&v<0.8?'var(--plum)':'var(--blue)'}"></div></div></div>`;
+  }).join("");
+
+  // gates & gaps
+  const zeros=[], gateT=[], gaps=[];
+  comps().forEach(c=>{
+    const cur=state.ratings[key(c)];
+    if(cur===undefined) return;
+    const r=req(c);
+    if(cur===0) zeros.push(c);
+    else if(cur<r){ (c.td==="T"?gateT:gaps).push({c,gap:r-cur}); }
+  });
+  const gl=$('gapList'); gl.innerHTML="";
+  if(!zeros.length&&!gateT.length&&!gaps.length){ gl.innerHTML=`<li style="color:var(--muted)">${totRated? "Không có năng lực nào dưới chuẩn — hồ sơ sạch. ✅":"Chưa có dữ liệu."}</li>`; }
+  zeros.forEach(c=>gl.innerHTML+=`<li><span class="plum">⛔ ĐIỂM 0 — ${c.c?c.c.name:c.name}</span>: vi phạm ranh giới/không làm được → TỪ CHỐI, rà soát ngay.</li>`);
+  gateT.sort((a,b)=>b.gap-a.gap).forEach(x=>gl.innerHTML+=`<li><span class="plum">🚧 CỔNG CHẶN [T]</span> ${x.c.name} — thiếu ${x.gap} cấp so yêu cầu (${lvlTag()}). Bắt buộc đóng gap trước kỳ sau.</li>`);
+  gaps.sort((a,b)=>b.gap-a.gap).slice(0,6).forEach(x=>gl.innerHTML+=`<li>▽ [D] ${x.c.name} — thiếu ${x.gap} cấp; ưu tiên IDP (trọng số ×2).</li>`);
+
+  // conclusion
+  const box=$('conclBox'), stc=$('stConcl');
+  let cls,label,detail;
+  if(!complete){cls="pending";label="CHƯA ĐỦ DỮ LIỆU";detail= sum!==100?"Trọng số A+K+S phải bằng 100%.":"Chấm đủ "+totAll+" năng lực để hệ thống kết luận ("+totRated+"/"+totAll+").";}
+  else{
+    const pct=Math.round(total*100);
+    if(zeros.length){cls="tuchoi";label="TỪ CHỐI";detail="Có "+zeros.length+" mục điểm 0 (vi phạm ranh giới) — dừng xếp loại, xử lý theo quy định. Nếu là hiểu nhầm dữ kiện, xác minh minh chứng rồi chấm lại.";}
+    else if(pct<65){cls="tuchoi";label="TỪ CHỐI — "+pct+"%";detail="Dưới ngưỡng 65%. Phương án thay thế: kế hoạch cải thiện có giám sát 30 ngày (PIP) với 3 gap lớn nhất ở trên, hoặc điều chuyển vị trí phù hợp hơn.";}
+    else if(gateT.length){cls="sua";label="SỬA — "+pct+"% (vướng cổng chặn)";detail="Tổng điểm "+(pct>=80?"đạt nhưng ":"")+"còn "+gateT.length+" năng lực nền tảng [T] dưới yêu cầu — cổng chặn ưu tiên tuyệt đối. Đóng các gap [T] liệt kê ở trên trước kỳ đánh giá sau.";}
+    else if(pct<80){cls="sua";label="SỬA — "+pct+"%";detail="Trong biên 65–79%. Lập IDP cho các gap [D] ở trên, hẹn chấm lại sau 1 chu kỳ.";}
+    else if(pct<90){cls="dat";label="ĐẠT — "+pct+"%";detail="Đạt chuẩn "+lvlTag()+". Duy trì ổn định qua các kỳ; nhân bản điểm mạnh đã ghi nhận.";}
+    else{cls="dat-tot";label="ĐẠT TỐT — "+pct+"%";detail="≥90% chuẩn "+lvlTag()+" và sạch cổng chặn — đủ điều kiện xét lên cấp kế tiếp theo lộ trình IC/MG (kèm điều kiện định lượng của cấp, duy trì ≥3–6 tháng).";}
+  }
+  box.className="concl "+cls; box.innerHTML=`<span class="big">${label}</span><div style="font-weight:400;font-size:12.5px;margin-top:3px">${detail}</div>`;
+  const colr={pending:["var(--line)","var(--muted)"],"dat-tot":["var(--blue)","var(--navy)"],dat:["var(--cyan)","var(--navy)"],sua:["var(--sakura)","var(--plum)"],tuchoi:["var(--plum)","var(--plum)"]}[cls];
+  stc.style.borderColor=colr[0]; stc.style.color=colr[1]; stc.textContent=label.split("—")[0].trim();
+
+  // delta
+  const prev=+$('prevScore').value;
+  const d=$('deltaOut');
+  if(prev&&total!==null){const df=Math.round(total*100)-prev; d.textContent=(df>=0?"▲ +":"▼ ")+df+" điểm so kỳ trước"; d.className="delta "+(df>=0?"up":"down");}
+  else d.textContent="";
+
+  drawRadar();
+  recalcProb(gs,total);
+}
+
+function drawRadar(){
+  const catScores = CATS.map(cat=>{
+    const list=comps().filter(c=>c.cat===cat);
+    let num=0,den=0;
+    list.forEach(c=>{const cur=state.ratings[key(c)]; if(cur===undefined)return; const w=c.td==="D"?2:1; num+=Math.min(cur/req(c),1)*w; den+=w;});
+    return den?num/den:0;
+  });
+  const cx=150,cy=132,R=95,n=CATS.length;
+  const pt=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/n;return [cx+r*Math.cos(a),cy+r*Math.sin(a)];};
+  let rings="";
+  [0.25,0.5,0.75,1].forEach(f=>{rings+=`<polygon points="${CATS.map((_,i)=>pt(i,R*f).join(",")).join(" ")}" fill="none" stroke="#C4E8F7" stroke-width="1"/>`;});
+  let axes="",labels="";
+  CATS.forEach((c,i)=>{const [x,y]=pt(i,R);axes+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#C4E8F7"/>`;
+    const [lx,ly]=pt(i,R+22);const short=(c==="Văn hoá Caumos")?"Văn hoá":c;labels+=`<text x="${lx}" y="${ly}" text-anchor="middle" font-size="10.5" font-weight="700" fill="#115E8E">${short}</text><text x="${lx}" y="${ly+12}" text-anchor="middle" font-size="10" fill="#399FD8">${Math.round(catScores[i]*100)}%</text>`;});
+  const poly=CATS.map((_,i)=>pt(i,R*catScores[i]).join(",")).join(" ");
+  $('radar').innerHTML=`<svg viewBox="0 0 300 280" width="300" height="280" role="img" aria-label="Radar năng lực theo nhóm gốc">${rings}${axes}<polygon points="${poly}" fill="rgba(57,159,216,.25)" stroke="#399FD8" stroke-width="2"/>${CATS.map((_,i)=>{const[x,y]=pt(i,R*catScores[i]);return `<circle cx="${x}" cy="${y}" r="3.5" fill="#115E8E"/>`;}).join("")}${labels}</svg>`;
+}
+
+function recalcProb(gs,total){
+  const p=$('period').value;
+  const panel=$('probPanel');
+  if(!GATES[p]){panel.classList.remove('show');return;}
+  panel.classList.add('show');
+  const G=GATES[p];
+  $('probGateName').textContent="— "+G.name;
+  $('probWkq').textContent=Math.round(G.w[0]*100)+"%";
+  $('probWnl').textContent=Math.round(G.w[1]*100)+"%";
+  $('probWvh').textContent=Math.round(G.w[2]*100)+"%";
+  // auto-fill NL = weighted K+S, VH = A
+  if(!state.probNLtouched && gs.K.score!==null && gs.S.score!==null){
+    const wK=+$('wK').value||0, wS=+$('wS').value||0;
+    const nl=(gs.K.score*wK+gs.S.score*wS)/((wK+wS)||1);
+    $('probNL').value=Math.round(nl*100);
+  }
+  if(!state.probVHtouched && gs.A.score!==null) $('probVH').value=Math.round(gs.A.score*100);
+  const kq=+$('probKQ').value, nl=+$('probNL').value, vh=+$('probVH').value;
+  const out=$('probTotal'), cc=$('probConcl');
+  if($('probKQ').value===""||$('probNL').value===""||$('probVH').value===""){out.textContent="—";cc.textContent="—";cc.style.borderColor="var(--line)";cc.style.color="var(--muted)";return;}
+  const score=Math.min(kq,120)*G.w[0]+nl*G.w[1]+vh*G.w[2];
+  out.textContent=score.toFixed(1);
+  let t,bc,c2;
+  if(score>=70){t="ĐẠT";bc="var(--blue)";c2="var(--navy)";}
+  else if(score>=60){t="SỬA — kèm điều kiện";bc="var(--sakura)";c2="var(--plum)";}
+  else{t="DỪNG";bc="var(--plum)";c2="var(--plum)";}
+  cc.textContent=t;cc.style.borderColor=bc;cc.style.color=c2;
+}
+
+/* events */
+$('posSeg').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+  state.pos=b.dataset.v;
+  $('posSeg').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  render();
+}));
+$('lvlSeg').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+  state.lvl=+b.dataset.v;
+  $('lvlSeg').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  render();
+}));
+['wA','wK','wS','prevScore'].forEach(id=>$(id).addEventListener('input',recalc));
+$('period').addEventListener('change',recalc);
+$('probKQ').addEventListener('input',recalc);
+$('probNL').addEventListener('input',()=>{state.probNLtouched=true;recalc();});
+$('probVH').addEventListener('input',()=>{state.probVHtouched=true;recalc();});
+$('btnPrint').addEventListener('click',()=>window.print());
+$('btnExport').addEventListener('click',()=>{
+  const payload={ meta:{empName:$('empName').value,rater:$('rater').value,date:$('evalDate').value,period:$('period').value,pos:state.pos,lvl:state.lvl,wA:$('wA').value,wK:$('wK').value,wS:$('wS').value,prevScore:$('prevScore').value,txtStrength:$('txtStrength').value,txtFix:$('txtFix').value,txtIDP:$('txtIDP').value,probKQ:$('probKQ').value,probNL:$('probNL').value,probVH:$('probVH').value},
+    ratings:state.ratings, evid:state.evid };
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,1)],{type:"application/json"}));
+  a.download="Caumos_AKS_"+($('empName').value||"nhansu").replace(/\s+/g,"_")+"_"+($('evalDate').value||"")+".json";
+  a.click();
+});
+$('btnImport').addEventListener('change',e=>{
+  const f=e.target.files[0]; if(!f)return;
+  const rd=new FileReader();
+  rd.onload=()=>{try{
+    const p=JSON.parse(rd.result);
+    state.ratings=p.ratings||{}; state.evid=p.evid||{};
+    const m=p.meta||{};
+    $('empName').value=m.empName||"";$('rater').value=m.rater||"";if(m.date)$('evalDate').value=m.date;
+    $('period').value=m.period||"quy";$('wA').value=m.wA||40;$('wK').value=m.wK||20;$('wS').value=m.wS||40;
+    $('prevScore').value=m.prevScore||"";$('txtStrength').value=m.txtStrength||"";$('txtFix').value=m.txtFix||"";$('txtIDP').value=m.txtIDP||"";
+    $('probKQ').value=m.probKQ||"";
+    if(m.probNL){$('probNL').value=m.probNL;state.probNLtouched=true;}
+    if(m.probVH){$('probVH').value=m.probVH;state.probVHtouched=true;}
+    state.pos=m.pos||"vhs";
+    state.lvl=(m.lvl==="J")?1:(m.lvl==="S")?2:(+m.lvl||1); // tương thích file cũ Junior/Senior
+    $('posSeg').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.v===state.pos));
+    $('lvlSeg').querySelectorAll('button').forEach(x=>x.classList.toggle('on',+x.dataset.v===state.lvl));
+    render();
+  }catch(err){alert("File không hợp lệ: "+err.message);}};
+  rd.readAsText(f);
+  e.target.value="";
+});
+
+render();
+</script>
+</body>
+</html>
