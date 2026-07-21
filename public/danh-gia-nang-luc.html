@@ -36,6 +36,12 @@ h1,h2,h3{color:var(--navy);font-weight:700}
 .field input[type=text],.field input[type=date],.field select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:13px;background:#FBFEFF;color:var(--ink)}
 .field input:focus,.field select:focus{outline:2px solid var(--cyan)}
 
+/* signature */
+.sigwrap{position:relative;margin-top:8px}
+.sigpad{width:100%;height:100px;display:block;border:1.5px dashed var(--muted);border-radius:10px;background:#FBFEFF;touch-action:none;cursor:crosshair}
+.sigph{position:absolute;left:12px;top:12px;font-size:11.5px;color:var(--muted);pointer-events:none}
+.sigwrap .sigclear{position:absolute;right:8px;bottom:8px;background:#fff;border:1px solid var(--line);padding:3px 9px;border-radius:7px}
+
 /* segmented */
 .seg{display:flex;border:1px solid var(--blue);border-radius:9px;overflow:hidden}
 .seg button{flex:1;padding:8px 6px;border:0;background:#fff;color:var(--blue);font-weight:700;font-family:inherit;font-size:13px;cursor:pointer}
@@ -87,7 +93,9 @@ details.guide[open] summary{margin-bottom:8px}
 .tag{font-size:10.5px;font-weight:700;padding:1px 8px;border-radius:10px;background:var(--bg);color:var(--muted);border:1px solid var(--line)}
 .tag.td-D{background:var(--navy);color:#fff;border-color:var(--navy)}
 .tag.td-T{background:#fff;color:var(--navy);border-color:var(--navy)}
-.tag.req{background:var(--pinkbg);color:var(--plum);border-color:var(--sakura)}
+.tag.req{background:var(--pinkbg);color:var(--plum);border-color:var(--sakura);padding:1px 6px 1px 8px}
+.reqSel{background:transparent;border:none;color:inherit;font:inherit;font-weight:800;cursor:pointer;padding:0 0 0 2px;margin:0;-webkit-appearance:menulist;}
+.reqSel:focus{outline:2px solid var(--cyan);border-radius:4px;}
 .crate{display:flex;flex-direction:column;gap:6px;min-width:280px}
 .rbtns{display:flex;gap:5px}
 .rbtns button{width:40px;height:34px;border-radius:8px;border:1.5px solid var(--line);background:#fff;font-weight:800;font-size:14px;color:var(--muted);cursor:pointer;font-family:inherit}
@@ -171,6 +179,8 @@ textarea{width:100%;min-height:64px;padding:8px 10px;border:1px solid var(--line
   .hdr{background:#fff;border:1px solid #999}
   .anchor{display:block !important}
   textarea{border:1px solid #ccc}
+  .reqSel{appearance:none;-webkit-appearance:none;color:#000;}
+  .sigpad{border:1px solid #999 !important;}
   @page{size:A4;margin:12mm}
 }
 </style>
@@ -295,8 +305,24 @@ textarea{width:100%;min-height:64px;padding:8px 10px;border:1px solid var(--line
   <div class="panel">
     <h2><span class="badge-num">✓</span> Xác nhận</h2>
     <div class="grid">
-      <div class="field"><label>Nhân sự được đánh giá (ký, ghi rõ họ tên)</label><div style="height:56px;border-bottom:1px dashed var(--muted)"></div></div>
-      <div class="field"><label>Người đánh giá / CMO (ký, ghi rõ họ tên)</label><div style="height:56px;border-bottom:1px dashed var(--muted)"></div></div>
+      <div class="field">
+        <label>Nhân sự được đánh giá — họ tên</label>
+        <input type="text" id="signEmpName" placeholder="Nguyễn Văn A">
+        <div class="sigwrap">
+          <canvas class="sigpad" id="sigEmp" width="720" height="200"></canvas>
+          <span class="sigph noprint">Ký bằng chuột/cảm ứng tại đây, hoặc để trống và ký tay sau khi in</span>
+          <button type="button" class="lnk noprint sigclear" data-clear="sigEmp">Xoá chữ ký</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>Người đánh giá / CMO — họ tên</label>
+        <input type="text" id="signRaterName" placeholder="Họ tên người đánh giá">
+        <div class="sigwrap">
+          <canvas class="sigpad" id="sigRater" width="720" height="200"></canvas>
+          <span class="sigph noprint">Ký bằng chuột/cảm ứng tại đây, hoặc để trống và ký tay sau khi in</span>
+          <button type="button" class="lnk noprint sigclear" data-clear="sigRater">Xoá chữ ký</button>
+        </div>
+      </div>
     </div>
     <div class="note">Nguồn phương pháp: Khung năng lực Caumos v2 (thang điểm hành vi 0–4, phân biệt năng lực nền tảng bắt buộc và năng lực khác biệt) · Tư duy 4H &amp; 8 trụ cột văn hoá · Lộ trình thăng tiến IC/MG. Đánh giá theo trung bình cả chu kỳ, không xét lát cắt đơn lẻ; phân biệt "lệch xấu — cần sửa" và "lệch tốt — nên nhân rộng".</div>
   </div>
@@ -346,7 +372,7 @@ const LVLS = {
 };
 // Quy tắc cấp yêu cầu theo IC: IC1 = cột Junior · IC2 = cột Senior · IC3 = Senior + mọi năng lực D nâng cấp 4 · IC4 = IC3 + nhóm Quản trị tối thiểu cấp 3
 
-let state = {pos:"vhs", lvl:1, ratings:{}, evid:{}, probNLtouched:false, probVHtouched:false};
+let state = {pos:"vhs", lvl:1, ratings:{}, evid:{}, reqOverride:{}, probNLtouched:false, probVHtouched:false, signEmpName:"", signRaterName:""};
 
 const $ = id => document.getElementById(id);
 document.getElementById('evalDate').valueAsDate = new Date();
@@ -354,6 +380,14 @@ document.getElementById('evalDate').valueAsDate = new Date();
 function comps(){ return DATA[state.pos]; }
 function key(c){ return state.pos+"||"+c.name; }
 function req(c){
+  const k = key(c);
+  if(state.reqOverride[k]!==undefined) return state.reqOverride[k];
+  let r = (state.lvl===1) ? c.reqJ : c.reqS;
+  if(state.lvl>=3 && c.td==="D") r = Math.max(r,4);
+  if(state.lvl>=4 && c.cat==="Quản trị") r = Math.max(r,3);
+  return r;
+}
+function defaultReq(c){
   let r = (state.lvl===1) ? c.reqJ : c.reqS;
   if(state.lvl>=3 && c.td==="D") r = Math.max(r,4);
   if(state.lvl>=4 && c.cat==="Quản trị") r = Math.max(r,3);
@@ -395,7 +429,7 @@ function compRow(c){
           <span class="tag">${c.cat}</span>
           <span class="tag td-${c.td}" title="${c.td==='D'?'Năng lực khác biệt — không bắt buộc, nhưng tính điểm gấp đôi (×2) khi đạt':'Năng lực nền tảng — bắt buộc phải đạt, nếu thiếu sẽ chặn kết quả ĐẠT'}">${c.td==='D'?'D ×2':'T ×1'}</span>
           <span class="tag">${c.ksa}</span>
-          <span class="tag req">Yêu cầu: cấp ${r}</span>
+          <span class="tag req">Yêu cầu: cấp <select class="reqSel noprint-plain" data-k="${k}" title="Mặc định theo cấp đang chọn: cấp ${defaultReq(c)} — có thể đổi riêng cho năng lực này nếu cần">${[1,2,3,4].map(v=>`<option value="${v}"${v===r?' selected':''}>${v}</option>`).join("")}</select></span>
         </div>
         <div class="ctools noprint">
           <button class="lnk" data-act="bars">📖 Thang hành vi 4 cấp</button>
@@ -416,6 +450,10 @@ function compRow(c){
   div.querySelector('[data-act=bars]').addEventListener('click',e=>{div.querySelector('.barsfull').classList.toggle('show');});
   div.querySelector('[data-act=evid]').addEventListener('click',e=>{div.querySelector('.evid').classList.toggle('show');});
   div.querySelector('.evid input').addEventListener('input',e=>{state.evid[k]=e.target.value;});
+  div.querySelector('.reqSel').addEventListener('change',e=>{
+    state.reqOverride[k] = +e.target.value;
+    refreshRow(div,c); recalc();
+  });
   refreshRow(div,c);
   return div;
 }
@@ -580,6 +618,52 @@ function recalcProb(gs,total){
   cc.textContent=t;cc.style.borderColor=bc;cc.style.color=c2;
 }
 
+/* signature pads — drawn in-browser, never leaves the device except inside the exported .json/PDF */
+function initSigPad(canvas){
+  const ctx = canvas.getContext('2d');
+  ctx.strokeStyle = "#123A56"; ctx.lineWidth = 3; ctx.lineCap = "round"; ctx.lineJoin = "round";
+  const ph = canvas.parentElement.querySelector('.sigph');
+  let drawing = false, last = null;
+  function pos(e){
+    const rect = canvas.getBoundingClientRect();
+    return { x:(e.clientX-rect.left)*(canvas.width/rect.width), y:(e.clientY-rect.top)*(canvas.height/rect.height) };
+  }
+  canvas.addEventListener('pointerdown', e=>{
+    drawing = true; last = pos(e); canvas.setPointerCapture(e.pointerId);
+    if(ph) ph.style.display = "none";
+    e.preventDefault();
+  });
+  canvas.addEventListener('pointermove', e=>{
+    if(!drawing) return;
+    const p = pos(e);
+    ctx.beginPath(); ctx.moveTo(last.x,last.y); ctx.lineTo(p.x,p.y); ctx.stroke();
+    last = p; e.preventDefault();
+  });
+  ["pointerup","pointerleave","pointercancel"].forEach(evt=>canvas.addEventListener(evt, ()=>{drawing=false;}));
+}
+function sigIsBlank(canvas){
+  const ctx = canvas.getContext('2d');
+  const data = ctx.getImageData(0,0,canvas.width,canvas.height).data;
+  for(let i=3;i<data.length;i+=4){ if(data[i]!==0) return false; }
+  return true;
+}
+function clearSig(canvas){
+  canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);
+  const ph = canvas.parentElement.querySelector('.sigph');
+  if(ph) ph.style.display = "";
+}
+function loadSig(canvas, dataUrl){
+  clearSig(canvas);
+  if(!dataUrl) return;
+  const img = new Image();
+  img.onload = ()=>{ canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height); const ph=canvas.parentElement.querySelector('.sigph'); if(ph) ph.style.display="none"; };
+  img.src = dataUrl;
+}
+[$('sigEmp'), $('sigRater')].forEach(initSigPad);
+document.querySelectorAll('.sigclear').forEach(b=>b.addEventListener('click', ()=>clearSig($(b.dataset.clear))));
+$('empName').addEventListener('input', ()=>{ if(!$('signEmpName').value) $('signEmpName').value = $('empName').value; });
+$('rater').addEventListener('input', ()=>{ if(!$('signRaterName').value) $('signRaterName').value = $('rater').value; });
+
 /* events */
 $('posSeg').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
   state.pos=b.dataset.v;
@@ -598,8 +682,10 @@ $('probNL').addEventListener('input',()=>{state.probNLtouched=true;recalc();});
 $('probVH').addEventListener('input',()=>{state.probVHtouched=true;recalc();});
 $('btnPrint').addEventListener('click',()=>window.print());
 $('btnExport').addEventListener('click',()=>{
-  const payload={ meta:{empName:$('empName').value,rater:$('rater').value,date:$('evalDate').value,period:$('period').value,pos:state.pos,lvl:state.lvl,wA:$('wA').value,wK:$('wK').value,wS:$('wS').value,prevScore:$('prevScore').value,txtStrength:$('txtStrength').value,txtFix:$('txtFix').value,txtIDP:$('txtIDP').value,probKQ:$('probKQ').value,probNL:$('probNL').value,probVH:$('probVH').value},
-    ratings:state.ratings, evid:state.evid };
+  const payload={ meta:{empName:$('empName').value,rater:$('rater').value,date:$('evalDate').value,period:$('period').value,pos:state.pos,lvl:state.lvl,wA:$('wA').value,wK:$('wK').value,wS:$('wS').value,prevScore:$('prevScore').value,txtStrength:$('txtStrength').value,txtFix:$('txtFix').value,txtIDP:$('txtIDP').value,probKQ:$('probKQ').value,probNL:$('probNL').value,probVH:$('probVH').value,signEmpName:$('signEmpName').value,signRaterName:$('signRaterName').value},
+    ratings:state.ratings, evid:state.evid, reqOverride:state.reqOverride,
+    sigEmp: sigIsBlank($('sigEmp'))?"":$('sigEmp').toDataURL("image/png"),
+    sigRater: sigIsBlank($('sigRater'))?"":$('sigRater').toDataURL("image/png") };
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,1)],{type:"application/json"}));
   a.download="Caumos_AKS_"+($('empName').value||"nhansu").replace(/\s+/g,"_")+"_"+($('evalDate').value||"")+".json";
@@ -610,12 +696,14 @@ $('btnImport').addEventListener('change',e=>{
   const rd=new FileReader();
   rd.onload=()=>{try{
     const p=JSON.parse(rd.result);
-    state.ratings=p.ratings||{}; state.evid=p.evid||{};
+    state.ratings=p.ratings||{}; state.evid=p.evid||{}; state.reqOverride=p.reqOverride||{};
     const m=p.meta||{};
     $('empName').value=m.empName||"";$('rater').value=m.rater||"";if(m.date)$('evalDate').value=m.date;
     $('period').value=m.period||"quy";$('wA').value=m.wA||40;$('wK').value=m.wK||20;$('wS').value=m.wS||40;
     $('prevScore').value=m.prevScore||"";$('txtStrength').value=m.txtStrength||"";$('txtFix').value=m.txtFix||"";$('txtIDP').value=m.txtIDP||"";
     $('probKQ').value=m.probKQ||"";
+    $('signEmpName').value=m.signEmpName||"";$('signRaterName').value=m.signRaterName||"";
+    loadSig($('sigEmp'), p.sigEmp); loadSig($('sigRater'), p.sigRater);
     if(m.probNL){$('probNL').value=m.probNL;state.probNLtouched=true;}
     if(m.probVH){$('probVH').value=m.probVH;state.probVHtouched=true;}
     state.pos=m.pos||"vhs";
