@@ -149,7 +149,6 @@ export default function Roadmap() {
                 Phương pháp luận đánh giá nhân sự mới trong 60 ngày đầu tiên — áp dụng chung cho toàn Phòng Marketing.
               </p>
               <div className="coverMeta">
-                <span className="chip">Bản trình · Ban Giám đốc (CEO)</span>
                 <span className="chip">4 giai đoạn · 60 ngày</span>
               </div>
               <HeroTimeline />
@@ -187,30 +186,21 @@ export default function Roadmap() {
               <Rail activePhase={1} />
               <p className="eyebrow">Giai đoạn 1 · Ngày 1–7</p>
               <h2 className="title">Hoà nhập</h2>
-              <div className="twoCol" style={{ marginTop: "clamp(22px,3.4vh,32px)" }}>
-                <div>
-                  <div className="contentBlock contentBlockFlush">
-                    <p className="contentBlockLabel">Mục tiêu</p>
-                    <p className="lede" style={{ maxWidth: "none" }}>
-                      Trả lời câu hỏi duy nhất: người này có <b style={{ color: "var(--navy-ink)" }}>HỢP với văn hoá và tính chất công việc</b> không? Giai đoạn này chưa đòi hỏi kết quả phục vụ công việc kinh doanh.
-                    </p>
-                  </div>
-                  <div className="contentBlock">
-                    <p className="contentBlockLabel">Yếu tố định tính cần nắm bắt</p>
-                    <ul className="checkList">
-                      <li><CheckIcon />Hiểu rõ thương hiệu, sản phẩm & những điều nên – không nên nói, làm</li>
-                      <li><CheckIcon />Nắm được văn hoá Phòng Marketing — 8 trụ cột văn hoá</li>
-                      <li><CheckIcon />Hiểu quy trình, công cụ và luồng phối hợp giữa các bộ phận</li>
-                      <li><CheckIcon />Hiểu rõ vai trò của chính mình và chỉ số (KPI) sẽ chịu trách nhiệm</li>
-                    </ul>
-                  </div>
+              <div style={{ marginTop: "clamp(22px,3.4vh,32px)" }}>
+                <div className="contentBlock contentBlockFlush">
+                  <p className="contentBlockLabel">Mục tiêu</p>
+                  <p className="lede" style={{ maxWidth: "none" }}>
+                    Trả lời câu hỏi duy nhất: người này có <b style={{ color: "var(--navy-ink)" }}>HỢP với văn hoá và tính chất công việc</b> không? Giai đoạn này chưa đòi hỏi kết quả phục vụ công việc kinh doanh.
+                  </p>
                 </div>
-                <div>
-                  <div className="callout">
-                    7 ngày này <b>CHƯA ký hợp đồng thử việc</b> — chỉ quan sát hai chiều.
-                    <br /><br />
-                    Đạt → ký HĐ thử việc 2 tháng.<br />Không qua → dừng ngay.
-                  </div>
+                <div className="contentBlock">
+                  <p className="contentBlockLabel">Yếu tố định tính cần nắm bắt</p>
+                  <ul className="checkList">
+                    <li><CheckIcon />Hiểu rõ thương hiệu, sản phẩm & những điều nên – không nên nói, làm</li>
+                    <li><CheckIcon />Nắm được văn hoá Phòng Marketing — 8 trụ cột văn hoá</li>
+                    <li><CheckIcon />Hiểu quy trình, công cụ và luồng phối hợp giữa các bộ phận</li>
+                    <li><CheckIcon />Hiểu rõ vai trò của chính mình và chỉ số (KPI) sẽ chịu trách nhiệm</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -372,7 +362,6 @@ export default function Roadmap() {
               <HeroTimeline withName={false} />
               <div className="closingFooter">
                 <span>Phòng Marketing · Caumos</span>
-                <span>Bản trình Ban Giám đốc (CEO)</span>
               </div>
             </div>
           </section>
