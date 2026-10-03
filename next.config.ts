@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         source: "/danh-gia-nang-luc",
         destination: "/danh-gia-nang-luc.html",
       },
+      {
+        source: "/caumos-1-0",
+        destination: "/caumos-1-0/index.html",
+      },
     ];
   },
 };

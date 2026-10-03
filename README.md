@@ -7,6 +7,7 @@ Website nội bộ của Caumos — Phòng Marketing. Dự án Next.js, đang ch
 - **`/`** — Trang chủ: Lộ trình thử việc 2 tháng (bản slide điều hướng bằng phím mũi tên / vuốt / click). Component: `src/components/Roadmap.tsx`.
 - **`/van-hoa`** — Văn hoá Caumos: cẩm nang 8 trụ cột văn hoá Phòng Marketing. Component: `src/app/van-hoa/page.tsx`.
 - **`/danh-gia-nang-luc`** — Phiếu đánh giá năng lực nhân sự (phương pháp AKS). File tĩnh `public/danh-gia-nang-luc.html`, phục vụ qua rewrite trong `next.config.ts` để có URL sạch. Chấm điểm, biểu đồ radar và **lưu kết quả về máy (.json) / xuất PDF** chạy hoàn toàn phía client (không có backend, không gửi dữ liệu lên server) — xem nút "Lưu kết quả" và "In / Xuất PDF" ở thanh sticky cuối trang.
+- **`/caumos-1-0`** — Landing page bán hàng "Caumos 1.0" (Kem khử mùi Fresh Silence 30g). File tĩnh `public/caumos-1-0/index.html` + ảnh trong `public/caumos-1-0/assets/`, phục vụ qua rewrite trong `next.config.ts`. Không có menu nội bộ, không thuộc sitemap. Form đặt hàng đọc địa chỉ nhận đơn từ thuộc tính `data-webhook` của thẻ `<form class="cm-form">` — **để trống thì đơn không được gửi đi đâu**.
 - Menu điều hướng chính nằm ở `src/components/SiteNav.tsx`, hiển thị trên mọi trang qua `src/app/layout.tsx`. Thêm trang mới → thêm route trong `src/app/` và thêm link vào mảng `LINKS` trong `SiteNav.tsx`. Nếu trang mới là file tĩnh (như `/danh-gia-nang-luc`), nhớ thêm cả rewrite trong `next.config.ts` và mục vào `src/app/sitemap.ts`.
 
 ## Design system dùng chung
